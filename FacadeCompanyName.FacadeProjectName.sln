@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacadeCompanyName.FacadePro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacadeCompanyName.FacadeProjectName.Oracle", "src\FacadeCompanyName.FacadeProjectName.Oracle\FacadeCompanyName.FacadeProjectName.Oracle.csproj", "{E7C55A2D-0A43-497D-A432-BFFFEC91F853}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{37BBE8ED-3C5A-4B29-8CB3-C4389F2D4805}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
