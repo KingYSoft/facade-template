@@ -1,10 +1,8 @@
 ﻿using Abp.Authorization;
 using Facade.AspNetCore.Web.Models;
-using FacadeCompanyName.FacadeProjectName.Oracle;
-using FacadeCompanyName.FacadeProjectName.Web.Host.Models.Dto;
+using FacadeCompanyName.FacadeProjectName.Application.Demo;
+using FacadeCompanyName.FacadeProjectName.DomainService.Demo.Dto;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
@@ -12,28 +10,20 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
     [Route("demo")]
     public class DemoController : FacadeProjectNameControllerBase
     {
-        private readonly IFacadeProjectNameOracleRepository _oracleRepository;
-        public DemoController(IFacadeProjectNameOracleRepository oracleRepository)
+        private readonly IDemoApplication _demoApplication;
+        public DemoController(IDemoApplication demoApplication)
         {
-            _oracleRepository = oracleRepository;
+            _demoApplication = demoApplication;
         }
         [Route("check")]
         [HttpPost]
         [AbpAuthorize]
         public async Task<JsonResponse<string>> Check([FromBody]CheckInput input)
         {
-            var a = await _oracleRepository.QueryAsync<DualQuery_>(@"
-select sysdate  from dual  where 1=:id
-", new { id = input.Id });
-            var time = a.FirstOrDefault()?.SysDate.ToString("yyyy-MM-dd HH:mm:ss");
             return new JsonResponse<string>(true, L("WelcomeMessage"))
             {
-                Data = time
+                Data = await _demoApplication.Check(input)
             };
-        }
-        public class DualQuery_
-        {
-            public DateTime SysDate { get; set; }
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FacadeCompanyName.FacadeProjectName.Web.Host.Models.Dto
+namespace FacadeCompanyName.FacadeProjectName.DomainService.Demo.Dto
 {
     public class CheckInput
     {
+
         [Required]
         public int Id { get; set; }
     }
