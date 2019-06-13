@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>FacadeCompanyName.FacadeProjectName.Web.Host</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>FacadeCompanyName.FacadeProjectName.Web.Host</PackageId>
+    <UserSecretsId>FacadeCompanyName-FacadeProjectName-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8F11</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\swagger\ui\abp.swagger.js" />
+    <Content Remove="wwwroot\swagger\ui\index.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\swagger\ui\abp.swagger.js" />
+    <EmbeddedResource Include="wwwroot\swagger\ui\index.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Facade.AspNetCore" Version="1.0.0" />
+    <PackageReference Include="Facade.AspNetCore.Zero" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+
+    <PackageReference Include="Abp.AspNetCore.SignalR" Version="4.6.0" /> 
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.8.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.Application\FacadeCompanyName.FacadeProjectName.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\swagger\ui\abp.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
