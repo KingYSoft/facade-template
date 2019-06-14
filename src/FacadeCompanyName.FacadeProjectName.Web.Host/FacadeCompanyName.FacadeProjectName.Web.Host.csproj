@@ -11,12 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\swagger\ui\abp.swagger.js" />
     <Content Remove="wwwroot\swagger\ui\index.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="wwwroot\swagger\ui\abp.swagger.js" />
     <EmbeddedResource Include="wwwroot\swagger\ui\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -39,7 +37,7 @@
 
   <ItemGroup>
     <Content Update="wwwroot\swagger\ui\abp.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

@@ -17,10 +17,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Localization\SourceFiles\FacadeProjectName-zh-CN.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\SourceFiles\FacadeProjectName.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 
