@@ -1,5 +1,4 @@
-﻿using Abp.Authorization;
-using Facade.AspNetCore.Web.Models;
+﻿using Facade.AspNetCore.Web.Models;
 using FacadeCompanyName.FacadeProjectName.Application.Demo;
 using FacadeCompanyName.FacadeProjectName.DomainService.Demo.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +16,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
         }
         [Route("check")]
         [HttpPost]
-        [AbpAuthorize]
         public async Task<JsonResponse<string>> Check([FromBody]CheckInput input)
         {
             return new JsonResponse<string>(true, L("WelcomeMessage"))

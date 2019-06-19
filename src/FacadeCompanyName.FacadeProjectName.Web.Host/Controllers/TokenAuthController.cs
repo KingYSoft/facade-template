@@ -1,4 +1,5 @@
 ﻿using Abp.Runtime.Security;
+using Facade.AspNetCore.Mvc.Authorization;
 using Facade.AspNetCore.Web.Models;
 using Facade.AspNetCore.Zero;
 using FacadeCompanyName.FacadeProjectName.Application;
@@ -25,6 +26,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
             _configuration = configuration;
         }
         [HttpPost]
+        [NoToken]
         public async Task<JsonResponse<AuthenticateOutput>> Authenticate([FromBody] AuthenticateInput input)
         {
             if (input.UserNameOrEmailAddress == "admin" && input.Password == "admin")

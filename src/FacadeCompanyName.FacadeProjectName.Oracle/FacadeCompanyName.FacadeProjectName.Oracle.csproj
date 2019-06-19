@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.Dapper.Oracle" Version="1.0.3" />
+    <PackageReference Include="Facade.Dapper.Oracle" Version="1.0.4" />
   </ItemGroup>
 
 </Project>
