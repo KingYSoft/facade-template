@@ -11,11 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Localization\AbpSourceFiles\Abp-zh-CN.xml" />
     <None Remove="Localization\SourceFiles\FacadeProjectName-zh-CN.xml" />
     <None Remove="Localization\SourceFiles\FacadeProjectName.xml" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Localization\AbpSourceFiles\Abp-zh-CN.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\FacadeProjectName-zh-CN.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>

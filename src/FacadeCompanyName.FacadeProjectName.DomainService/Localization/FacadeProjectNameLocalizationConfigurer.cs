@@ -1,8 +1,9 @@
-﻿using Abp.Configuration.Startup;
+﻿using Abp;
+using Abp.Configuration.Startup;
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
+using Abp.Localization.Sources;
 using Abp.Reflection.Extensions;
-
 namespace FacadeCompanyName.FacadeProjectName.DomainService.Localization
 {
     public static class FacadeProjectNameLocalizationConfigurer
@@ -17,6 +18,14 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Localization
                     )
                 )
             );
+            localizationConfiguration.Sources.Extensions.Add(
+               new LocalizationSourceExtensionInfo(AbpConsts.LocalizationSourceName,
+                   new XmlEmbeddedFileLocalizationDictionaryProvider(
+                       typeof(FacadeProjectNameLocalizationConfigurer).GetAssembly(),
+                       "FacadeCompanyName.FacadeProjectName.DomainService.Localization.AbpSourceFiles"
+                   )
+               )
+           );
         }
     }
 }
