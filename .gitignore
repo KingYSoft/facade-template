@@ -5,7 +5,7 @@
 obj/
 bin/
 
-[Bb]in
-[Oo]bj
+/**/[Bb]in
+/**/[Oo]bj
 
 src/FacadeCompanyName.FacadeProjectName.Web.Host/App_Data/Logs/
