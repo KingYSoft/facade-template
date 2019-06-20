@@ -1,24 +1,21 @@
 ﻿using FacadeCompanyName.FacadeProjectName.DomainService.Demo.Dto;
-using FacadeCompanyName.FacadeProjectName.Oracle;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share.Demo;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService.Demo
 {
     public class DemoService : FacadeProjectNameDomainServiceBase, IDemoService
     {
-        private readonly IFacadeProjectNameOracleRepository _oracleRepository;
-        public DemoService(IFacadeProjectNameOracleRepository oracleRepository)
+        private readonly IDemoRepository _demoRepository;
+        public DemoService(IDemoRepository demoRepository)
         {
-            _oracleRepository = oracleRepository;
+            _demoRepository = demoRepository;
         }
         public async Task<string> Check(CheckInput input)
         {
-            var duals = await _oracleRepository.QueryAsync<DualQuery_>(@"
-select sysdate  from dual  where 1=:id
-", new { id = input.Id });
-            return duals.FirstOrDefault()?.SysDate.ToString("yyyy-MM-dd HH:mm:ss");
+            var d = await _demoRepository.GetAsync(input.Id);
+            return d?.Name;//.SysDate.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         public class DualQuery_
