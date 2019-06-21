@@ -5,7 +5,8 @@ namespace FacadeCompanyName.FacadeProjectName.Application
 {
     public abstract class FacadeProjectNameApplicationBase : ApplicationService, IFacadeProjectNameApplicationBase
     {
-        public FacadeProjectNameApplicationBase()
+        protected FacadeProjectNameApplicationBase()
+            : base()
         {
             LocalizationSourceName = FacadeProjectNameConsts.LocalizationSourceName;
         }
