@@ -15,19 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Localization\AbpWebSourceFiles\AbpWeb-zh-CN.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\AbpWebSourceFiles\AbpWeb-zh-CN.xml" />
     <EmbeddedResource Include="wwwroot\swagger\ui\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AspNetCore" Version="1.0.6" />
-    <PackageReference Include="Facade.AspNetCore.Zero" Version="1.0.6" />
+    <PackageReference Include="Facade.AspNetCore" Version="1.1.0" />
+    <PackageReference Include="Facade.AspNetCore.Zero" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
 

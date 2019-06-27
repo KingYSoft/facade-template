@@ -6,5 +6,6 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Demo
     public interface IDemoService : IFacadeProjectNameDomainServiceBase
     {
         Task<string> Check(CheckInput input);
+        Task<string> Query(int id);
     }
 }

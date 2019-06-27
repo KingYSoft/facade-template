@@ -23,5 +23,14 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
                 Data = await _demoApplication.Check(input)
             };
         }
+        [Route("query")]
+        [HttpGet]
+        public async Task<JsonResponse<string>> Query([FromQuery] int id)
+        {
+            return new JsonResponse<string>(true, L("WelcomeMessage"))
+            {
+                Data = await _demoApplication.Query(id)
+            };
+        }
     }
 }

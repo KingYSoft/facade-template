@@ -11,13 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Localization\AbpSourceFiles\Abp-zh-CN.xml" />
     <None Remove="Localization\SourceFiles\FacadeProjectName-zh-CN.xml" />
     <None Remove="Localization\SourceFiles\FacadeProjectName.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Localization\AbpSourceFiles\Abp-zh-CN.xml" />
     <EmbeddedResource Include="Localization\SourceFiles\FacadeProjectName-zh-CN.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -28,7 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="Abp.AutoMapper" Version="4.6.0" />
-    <PackageReference Include="Facade.Castle.NLogger" Version="1.0.6" />
+    <PackageReference Include="Facade.Castle.NLogger" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -16,5 +16,9 @@ namespace FacadeCompanyName.FacadeProjectName.Application.Demo
         {
             return await _demoService.Check(input);
         }
+        public async Task<string> Query(int id)
+        {
+            return await _demoService.Query(id);
+        }
     }
 }
