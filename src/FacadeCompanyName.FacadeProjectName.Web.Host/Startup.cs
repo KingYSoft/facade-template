@@ -95,6 +95,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                     options.IocManager.IocContainer.AddFacility<LoggingFacility>(f =>
                     {
                         f.UseFacadeNLog();
+                        //使用Facade.NLogger.Exceptionless
+                        //f.UseFacadeNLog(_appConfiguration["Exceptionless:ServerUrl"], _appConfiguration["Exceptionless:ApiKey"]);
                     });
                 });
         }

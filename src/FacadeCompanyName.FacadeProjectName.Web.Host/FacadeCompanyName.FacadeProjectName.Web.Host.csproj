@@ -21,8 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AspNetCore" Version="1.1.0" />
-    <PackageReference Include="Facade.AspNetCore.Zero" Version="1.1.0" />
+    <PackageReference Include="Facade.AspNetCore" Version="1.1.4" />
+    <PackageReference Include="Facade.AspNetCore.Zero" Version="1.1.4" />
+    <PackageReference Include="Facade.Castle.NLogger" Version="1.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
 
