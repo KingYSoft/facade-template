@@ -1,14 +1,12 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using Facade.Castle.NLogger;
 using FacadeCompanyName.FacadeProjectName.DomainService.Localization;
 using FacadeCompanyName.FacadeProjectName.Oracle;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService
 {
     [DependsOn(
-        typeof(FacadeCastleNLoggerModule),
         typeof(FacadeProjectNameOracleModule),
         typeof(AbpAutoMapperModule)
            )]
