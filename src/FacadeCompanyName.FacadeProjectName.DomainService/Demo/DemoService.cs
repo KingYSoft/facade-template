@@ -17,7 +17,7 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Demo
         }
         public async Task<string> Check(CheckInput input)
         {
-            var d = await _demoRepository.GetAsync(input.Id);
+            var d = await _demoRepository.FirstOrDefaultAsync(input.Id);
             return d?.Name;//.SysDate.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
