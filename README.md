@@ -13,6 +13,7 @@
 - 支持 Quartz
 - 支持 Dapper
 - 支持 Oracle
+- 支持 nlog
 - 支持 exceptionless
 - 支持 swagger
 - 支持 Modbus 协议 RTU/TCP 传输
