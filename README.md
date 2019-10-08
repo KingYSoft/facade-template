@@ -9,9 +9,14 @@
 - 基于 abp
 - 支持 signalr
 - 支持 jwt
+- 支持 AutoMapper
+- 支持 Quartz
+- 支持 Dapper
 - 支持 Oracle
 - 支持 exceptionless
 - 支持 swagger
+- 支持 Modbus 协议 RTU/TCP 传输
+- 支持 利用Socket 使用 MLLP 协议传输 HL7 消息
 
 # 使用
 
