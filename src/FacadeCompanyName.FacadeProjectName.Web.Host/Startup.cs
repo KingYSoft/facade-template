@@ -2,6 +2,7 @@
 using Abp.Extensions;
 using Castle.Facilities.Logging;
 using Facade.AspNetCore;
+using Facade.AspNetCore.Web.NLog;
 using Facade.Castle.NLogger;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Configuration;
@@ -13,7 +14,6 @@ using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NLog.Web;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Linq;
@@ -91,7 +91,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                 // Configure Log4Net logging
                 options =>
                 {
-                    _env.ConfigureNLog($"{_env.ContentRootPath}/NLog.config");
+                    _env.ConfigureFacadeNLog($"{_env.ContentRootPath}/NLog.config");
                     options.IocManager.IocContainer.AddFacility<LoggingFacility>(f =>
                     {
                         f.UseFacadeNLog();
