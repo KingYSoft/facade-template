@@ -1,19 +1,21 @@
 ﻿using Abp.AspNetCore;
 using Abp.Extensions;
+using Abp.Reflection.Extensions;
 using Castle.Facilities.Logging;
 using Facade.AspNetCore;
+using Facade.AspNetCore.Configuration;
 using Facade.AspNetCore.Web.NLog;
 using Facade.Castle.NLogger;
+using Facade.Core.Configuration;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication;
-using FacadeCompanyName.FacadeProjectName.Web.Host.Configuration;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.Linq;
@@ -26,20 +28,21 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
         private const string _defaultCorsPolicyName = "localhost";
 
         private readonly IConfigurationRoot _appConfiguration;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IWebHostEnvironment env)
         {
             _env = env;
-            _appConfiguration = env.GetAppConfiguration();
+            _appConfiguration = env.BuildConfiguration(new FacadeConfigurationBuilderOptions()
+            {
+                UserSecretsAssembly = typeof(FacadeProjectNameWebHostModule).GetAssembly()
+            });
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // MVC
-            services.AddMvc(
-                options => options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName))
-            ).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Latest).AddNewtonsoftJson();
+
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressConsumesConstraintForFormFileParameters = true;
@@ -73,16 +76,16 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new Info { Title = "FacadeProjectName API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "FacadeProjectName API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
 
                 // Define the BearerAuth scheme that's in use
-                options.AddSecurityDefinition("bearerAuth", new ApiKeyScheme()
+                options.AddSecurityDefinition("bearerAuth", new OpenApiSecurityScheme()
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                     Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey
                 });
             });
 
@@ -91,7 +94,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                 // Configure Log4Net logging
                 options =>
                 {
-                    _env.ConfigureFacadeNLog($"{_env.ContentRootPath}/NLog.config");
                     options.IocManager.IocContainer.AddFacility<LoggingFacility>(f =>
                     {
                         f.UseFacadeNLog();
@@ -101,25 +103,24 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                 });
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseFacade(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
 
-            app.UseCors(_defaultCorsPolicyName); // Enable CORS!
-
             app.UseStaticFiles();
-
+            app.UseRouting();
+            app.UseCors(_defaultCorsPolicyName); // Enable CORS!
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseAbpRequestLocalization();
 
-
-            app.UseSignalR(routes =>
+            app.UseEndpoints(c =>
             {
-                routes.MapHub<FacadeProjectNameHub>("/signalr");
+                c.MapHub<FacadeProjectNameHub>("/signalr");
+                c.MapControllers();
             });
 
-            app.UseMvc();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger();

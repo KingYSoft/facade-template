@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>FacadeCompanyName.FacadeProjectName.DomainService.Share</AssemblyName>
     <PackageId>FacadeCompanyName.FacadeProjectName.DomainService.Share</PackageId>
@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.Dapper.Oracle" Version="1.2.6" />
+    <PackageReference Include="Facade.Dapper.Oracle" Version="2.0.0" />
   </ItemGroup>
  
 

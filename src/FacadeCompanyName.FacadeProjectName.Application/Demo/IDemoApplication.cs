@@ -7,5 +7,6 @@ namespace FacadeCompanyName.FacadeProjectName.Application.Demo
     {
         Task<string> Check(CheckInput input);
         Task<string> Query(int id);
+        Task Health();
     }
 }

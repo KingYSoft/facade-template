@@ -1,12 +1,13 @@
 ﻿using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Facade.AspNetCore;
+using Facade.AspNetCore.Configuration;
 using Facade.AspNetCore.Zero;
 using Facade.Castle.NLogger;
+using Facade.Core.Configuration;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication.JwtBearer;
-using FacadeCompanyName.FacadeProjectName.Web.Host.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -23,13 +24,16 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
               )]
     public class FacadeProjectNameWebHostModule : AbpModule
     {
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly IConfigurationRoot _appConfiguration;
 
-        public FacadeProjectNameWebHostModule(IHostingEnvironment env)
+        public FacadeProjectNameWebHostModule(IWebHostEnvironment env)
         {
             _env = env;
-            _appConfiguration = env.GetAppConfiguration();
+            _appConfiguration = env.BuildConfiguration(new FacadeConfigurationBuilderOptions()
+            {
+                UserSecretsAssembly = typeof(FacadeProjectNameWebHostModule).GetAssembly()
+            });
         }
         public override void PreInitialize()
         {
