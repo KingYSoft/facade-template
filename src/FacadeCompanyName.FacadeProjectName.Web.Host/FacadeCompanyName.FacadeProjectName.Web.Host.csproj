@@ -21,10 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AspNetCore" Version="2.0.0" />
-    <PackageReference Include="Facade.AspNetCore.Zero" Version="2.0.0" />
-    <PackageReference Include="Facade.Castle.NLogger" Version="2.0.0" />
-    <PackageReference Include="Facade.AspNetCore.SignalR" Version="2.0.0" />  
+    <PackageReference Include="Facade.AspNetCore" Version="2.1.0" />
+    <PackageReference Include="Facade.AspNetCore.Zero" Version="2.1.0" />
+    <PackageReference Include="Facade.Castle.NLogger" Version="2.1.0" />
+    <PackageReference Include="Facade.AspNetCore.SignalR" Version="2.1.0" />  
 
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
