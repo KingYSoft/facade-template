@@ -3,8 +3,8 @@ using Abp.Reflection.Extensions;
 using Facade.AspNetCore;
 using Facade.AspNetCore.Configuration;
 using Facade.AspNetCore.Zero;
-using Facade.Castle.NLogger;
 using Facade.Core.Configuration;
+using Facade.NLogger;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication.JwtBearer;
@@ -19,7 +19,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
     [DependsOn(
               typeof(FacadeProjectNameApplicationModule),
               typeof(FacadeAspNetCoreModule),
-              typeof(FacadeCastleNLoggerModule),
+              typeof(FacadeNLoggerModule),
               typeof(FacadeAspNetCoreZeroModule)
               )]
     public class FacadeProjectNameWebHostModule : AbpModule

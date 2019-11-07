@@ -7,7 +7,6 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Facade.AspNetCore.Web.NLog;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Host
 {
@@ -20,11 +19,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
               WebHost.CreateDefaultBuilder(args)
-                .ConfigureLogging(c =>
-                {
-                    c.AddFacadeNLog("NLog.config");
-                })
-                .UseFacadeNLog()
                 .UseStartup<Startup>();
     }
 }

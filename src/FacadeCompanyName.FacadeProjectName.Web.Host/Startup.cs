@@ -4,9 +4,8 @@ using Abp.Reflection.Extensions;
 using Castle.Facilities.Logging;
 using Facade.AspNetCore;
 using Facade.AspNetCore.Configuration;
-using Facade.AspNetCore.Web.NLog;
-using Facade.Castle.NLogger;
 using Facade.Core.Configuration;
+using Facade.NLogger;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Hubs;
 using Microsoft.AspNetCore.Builder;
@@ -96,9 +95,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                 {
                     options.IocManager.IocContainer.AddFacility<LoggingFacility>(f =>
                     {
-                        f.UseFacadeNLog();
-                        //使用Facade.NLogger.Exceptionless
-                        //f.UseFacadeNLog(_appConfiguration["Exceptionless:ServerUrl"], _appConfiguration["Exceptionless:ApiKey"]);
+                        f.UseFacadeNLog($"{_env.ContentRootPath}\\NLog.config");
+                        //f.UseFacadeNLog($"{_env.ContentRootPath}\\NLog.config",_appConfiguration["Exceptionless:ServerUrl"], _appConfiguration["Exceptionless:ApiKey"]);
                     });
                 });
         }
