@@ -2,7 +2,7 @@
 using Facade.Dapper.Oracle;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share.Demo;
 
-namespace FacadeCompanyName.FacadeProjectName.Oracle
+namespace FacadeCompanyName.FacadeProjectName.Oracle.EntityFrameworkCore.Repositories
 {
     public class DemoRepository : OracleDapperRepository<Demo, long>, IDemoRepository
     {

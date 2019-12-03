@@ -24,9 +24,9 @@ namespace FacadeCompanyName.FacadeProjectName.Application.Demo
         {
             return await _demoService.Query(id);
         }
-        public async Task Health()
+        public async Task<DateTime> Health()
         {
-            await _appQueryRepository.QueryAsync<DateTime>("select sysdate from dual");
+            return await _appQueryRepository.ExecuteScalarAsync<DateTime>("select sysdate from dual");
         }
     }
 }

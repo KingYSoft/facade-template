@@ -2,7 +2,7 @@
 using Facade.Dapper.Oracle;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
-namespace FacadeCompanyName.FacadeProjectName.Oracle
+namespace FacadeCompanyName.FacadeProjectName.Oracle.EntityFrameworkCore.Repositories
 {
     public class AppQueryRepository : OracleQueryRepository, IAppQueryRepository
     {

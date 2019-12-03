@@ -1,4 +1,5 @@
 ﻿using FacadeCompanyName.FacadeProjectName.DomainService.Demo.Dto;
+using System;
 using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.Application.Demo
@@ -7,6 +8,6 @@ namespace FacadeCompanyName.FacadeProjectName.Application.Demo
     {
         Task<string> Check(CheckInput input);
         Task<string> Query(int id);
-        Task Health();
+        Task<DateTime> Health();
     }
 }

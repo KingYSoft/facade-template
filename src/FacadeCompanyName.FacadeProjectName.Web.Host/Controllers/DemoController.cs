@@ -21,8 +21,10 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
         [NoToken]
         public async Task<JsonResponse> Health()
         {
-            await _demoApplication.Health();
-            return await Task.FromResult(new JsonResponse(true, L("WelcomeMessage")));
+            return new JsonResponse(true, L("WelcomeMessage"))
+            {
+                Data = await _demoApplication.Health()
+            };
         }
 
         [Route("check")]

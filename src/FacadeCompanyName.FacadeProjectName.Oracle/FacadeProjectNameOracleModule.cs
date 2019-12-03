@@ -1,6 +1,8 @@
 ﻿using Abp.Modules;
 using Abp.Reflection.Extensions;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace FacadeCompanyName.FacadeProjectName.Oracle
 {
@@ -20,6 +22,7 @@ namespace FacadeCompanyName.FacadeProjectName.Oracle
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(FacadeProjectNameOracleModule).GetAssembly());
+            DapperExtensions.DapperExtensions.SetMappingAssemblies(new List<Assembly> { typeof(FacadeProjectNameOracleModule).GetAssembly() });
         }
 
     }
