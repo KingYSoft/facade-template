@@ -5,12 +5,14 @@ using Abp.Localization;
 using Abp.Modules;
 using Abp.Net.Mail;
 using Abp.Reflection.Extensions;
+using Abp.TestBase;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService;
 
 namespace FacadeCompanyName.FacadeProjectName.Tests
 {
     [DependsOn(
+           typeof(AbpTestBaseModule),
            typeof(FacadeProjectNameApplicationModule)
            )]
     public class FacadeProjectNameTestModule : AbpModule
