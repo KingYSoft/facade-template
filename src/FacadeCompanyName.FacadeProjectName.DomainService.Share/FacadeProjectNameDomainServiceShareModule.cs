@@ -1,10 +1,12 @@
 ﻿using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Facade.Dapper.Oracle;
+using Facade.NLogger;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
 {
     [DependsOn(
+           typeof(FacadeNLoggerModule),
            typeof(FacadeDapperOralceModule)
            )]
     public class FacadeProjectNameDomainServiceShareModule : AbpModule
