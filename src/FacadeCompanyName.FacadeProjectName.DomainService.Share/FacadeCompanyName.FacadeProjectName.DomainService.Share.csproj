@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Facade.Dapper.Oracle" Version="2.1.9" />
+    <PackageReference Include="Facade.NLogger" Version="2.1.9" />
   </ItemGroup>
  
 
