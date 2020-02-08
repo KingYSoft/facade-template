@@ -2,6 +2,8 @@
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using Abp.Reflection.Extensions;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share;
+
 namespace FacadeCompanyName.FacadeProjectName.DomainService.Localization
 {
     public static class FacadeProjectNameLocalizationConfigurer

@@ -1,5 +1,5 @@
 ﻿using Abp.Application.Services;
-using FacadeCompanyName.FacadeProjectName.DomainService;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
 namespace FacadeCompanyName.FacadeProjectName.Application
 {

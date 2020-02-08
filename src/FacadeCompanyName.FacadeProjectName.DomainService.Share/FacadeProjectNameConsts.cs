@@ -1,4 +1,4 @@
-﻿namespace FacadeCompanyName.FacadeProjectName.DomainService
+﻿namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
 {
     public class FacadeProjectNameConsts
     {

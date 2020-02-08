@@ -6,7 +6,7 @@ using Facade.AspNetCore.SignalR;
 using Facade.AspNetCore.Zero;
 using Facade.Core.Configuration;
 using FacadeCompanyName.FacadeProjectName.Application;
-using FacadeCompanyName.FacadeProjectName.DomainService;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

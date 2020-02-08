@@ -1,4 +1,5 @@
 ﻿using Abp.Runtime.Session;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService
 {
