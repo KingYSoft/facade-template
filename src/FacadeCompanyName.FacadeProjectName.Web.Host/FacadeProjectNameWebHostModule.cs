@@ -37,8 +37,14 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
         }
         public override void PreInitialize()
         {
+
+            IocManager.Register<IFacadeConfiguration, FacadeConfiguration>(Abp.Dependency.DependencyLifeStyle.Singleton);
+            var facadeConfiguration = IocManager.Resolve<FacadeConfiguration>();
+            _appConfiguration.GetSection("FacadeConfiguration").Bind(facadeConfiguration);
+
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
-            Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
+            ///<see cref="DomainService.Share.Jobs.BackJob"/>
+            Configuration.BackgroundJobs.IsJobExecutionEnabled = true;
             Configuration.MultiTenancy.IsEnabled = FacadeProjectNameConsts.MultiTenancyEnabled;
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(FacadeProjectNameConsts.ConnectionStringName);
 
