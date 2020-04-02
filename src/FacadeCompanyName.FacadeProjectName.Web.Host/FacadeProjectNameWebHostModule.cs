@@ -35,6 +35,10 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                 UserSecretsAssembly = typeof(FacadeProjectNameWebHostModule).GetAssembly()
             });
         }
+        /// <summary>
+        /// 预加载
+        ///<see cref="DomainService.Share.Jobs.BackJob"/>
+        /// </summary>
         public override void PreInitialize()
         {
 
@@ -43,8 +47,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
             _appConfiguration.GetSection("FacadeConfiguration").Bind(facadeConfiguration);
 
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
-            ///<see cref="DomainService.Share.Jobs.BackJob"/>
-            Configuration.BackgroundJobs.IsJobExecutionEnabled = true;
+            Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
             Configuration.MultiTenancy.IsEnabled = FacadeProjectNameConsts.MultiTenancyEnabled;
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(FacadeProjectNameConsts.ConnectionStringName);
 
