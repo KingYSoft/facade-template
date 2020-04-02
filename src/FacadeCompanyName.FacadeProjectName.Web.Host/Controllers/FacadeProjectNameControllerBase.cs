@@ -1,6 +1,6 @@
 ﻿using Abp.AspNetCore.Mvc.Authorization;
 using Abp.AspNetCore.Mvc.Controllers;
-using FacadeCompanyName.FacadeProjectName.DomainService;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers

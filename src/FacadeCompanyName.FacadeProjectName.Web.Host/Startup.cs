@@ -6,6 +6,10 @@ using Facade.AspNetCore;
 using Facade.AspNetCore.Configuration;
 using Facade.Core.Configuration;
 using Facade.NLogger;
+using FacadeCompanyName.FacadeProjectName.Application;
+using FacadeCompanyName.FacadeProjectName.DomainService;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share;
+using FacadeCompanyName.FacadeProjectName.Oracle;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Hubs;
 using Microsoft.AspNetCore.Builder;
@@ -15,8 +19,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -86,6 +90,20 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey
                 });
+                var types = new Type[]
+                {
+                        typeof(FacadeProjectNameWebHostModule),
+                        typeof(FacadeProjectNameApplicationModule),
+                        typeof(FacadeProjectNameDomainServiceModule),
+                        typeof(FacadeProjectNameDomainServiceShareModule),
+                        typeof(FacadeProjectNameOracleModule),
+                };
+                foreach (var t in types)
+                {
+                    var xmlFile = $"{t.GetAssembly().GetName().Name}.xml";
+                    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                    options.IncludeXmlComments(xmlPath, true);
+                }
             });
 
             // Configure Abp and Dependency Injection
@@ -121,7 +139,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
 
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
-            app.UseSwagger();
+            app.UseSwagger(c => c.SerializeAsV2 = true);
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {

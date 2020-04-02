@@ -7,7 +7,7 @@ using Abp.Net.Mail;
 using Abp.Reflection.Extensions;
 using Abp.TestBase;
 using FacadeCompanyName.FacadeProjectName.Application;
-using FacadeCompanyName.FacadeProjectName.DomainService;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
 namespace FacadeCompanyName.FacadeProjectName.Tests
 {
