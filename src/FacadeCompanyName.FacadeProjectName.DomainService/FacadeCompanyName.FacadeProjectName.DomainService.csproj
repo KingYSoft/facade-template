@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\..\common.props" />
+  
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
@@ -25,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AutoMapper" Version="2.1.9" />
+    <PackageReference Include="Facade.AutoMapper" Version="2.1.13" />
   </ItemGroup>
 
   <ItemGroup>
