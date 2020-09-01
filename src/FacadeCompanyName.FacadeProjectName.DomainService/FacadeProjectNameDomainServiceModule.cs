@@ -26,7 +26,13 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService
 
         public override void Initialize()
         {
-            IocManager.RegisterAssemblyByConvention(typeof(FacadeProjectNameDomainServiceModule).GetAssembly());
+            var thisAssembly = typeof(FacadeProjectNameDomainServiceModule).GetAssembly();
+            IocManager.RegisterAssemblyByConvention(thisAssembly);
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(
+                // Scan the assembly for classes which inherit from AutoMapper.Profile
+                //cfg => cfg.AddProfiles(thisAssembly)
+                cfg => cfg.AddMaps(thisAssembly)
+            );
         }
 
     }

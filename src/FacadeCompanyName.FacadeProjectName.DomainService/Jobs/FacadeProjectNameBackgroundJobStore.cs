@@ -1,5 +1,6 @@
 ﻿using Abp.BackgroundJobs;
 using Abp.Dependency;
+using Abp.Domain.Uow;
 using Abp.Timing;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share.Jobs;
@@ -44,6 +45,7 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Jobs
             InsertAsync(jobInfo).GetAwaiter().GetResult();
         }
 
+        [UnitOfWork]
         public virtual async Task<List<BackgroundJobInfo>> GetWaitingJobsAsync(int maxResultCount)
         {
             var appEnv = Environment.MachineName + "_" + _configuration.AppName;
@@ -62,6 +64,8 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Jobs
             }
             return list;
         }
+
+        [UnitOfWork]
         public List<BackgroundJobInfo> GetWaitingJobs(int maxResultCount)
         {
             return GetWaitingJobsAsync(maxResultCount).GetAwaiter().GetResult();

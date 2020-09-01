@@ -105,7 +105,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                     options.IncludeXmlComments(xmlPath, true);
                 }
             });
-            services.AddSwaggerGenNewtonsoftSupport();
 
             // Configure Abp and Dependency Injection
             return services.AddFacade<FacadeProjectNameWebHostModule>(
