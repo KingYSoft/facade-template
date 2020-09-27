@@ -1,5 +1,5 @@
 ﻿using Facade.AspNetCore.Mvc.Authorization;
-using Facade.AspNetCore.Web.Models;
+using Facade.Core.Web;
 using FacadeCompanyName.FacadeProjectName.Application.Health;
 using Microsoft.AspNetCore.Mvc;
 using System;

@@ -1,7 +1,7 @@
 ﻿using Abp.Runtime.Security;
 using Facade.AspNetCore.Mvc.Authorization;
-using Facade.AspNetCore.Web.Models;
 using Facade.AspNetCore.Zero;
+using Facade.Core.Web;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication.JwtBearer;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Models.Dto;

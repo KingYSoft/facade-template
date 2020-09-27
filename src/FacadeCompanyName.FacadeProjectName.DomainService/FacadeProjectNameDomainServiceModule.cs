@@ -1,6 +1,8 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Facade.AutoMapper;
+using Facade.Quartz;
 using FacadeCompanyName.FacadeProjectName.DomainService.Interceptors;
 using FacadeCompanyName.FacadeProjectName.DomainService.Localization;
 using FacadeCompanyName.FacadeProjectName.Oracle;
@@ -9,7 +11,8 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService
 {
     [DependsOn(
         typeof(FacadeProjectNameOracleModule),
-        typeof(AbpAutoMapperModule)
+        typeof(FacadeQuartzModule),
+        typeof(FacadeAutoMapperModule)
            )]
     public class FacadeProjectNameDomainServiceModule : AbpModule
     {
