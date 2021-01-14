@@ -3,16 +3,19 @@ using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
 using Facade.Core.Application.Services;
 using Facade.Core.Domain.Repositories;
+using Facade.Core.Web;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
 namespace FacadeCompanyName.FacadeProjectName.Application
 {
     public abstract class FacadeProjectNameApplicationBase : ApplicationService, IFacadeProjectNameApplicationBase
     {
-        protected FacadeProjectNameApplicationBase()
+        private readonly IHttpRequestHeaderParser _httpRequestHeaderParser;
+        protected FacadeProjectNameApplicationBase(IHttpRequestHeaderParser httpRequestHeaderParser)
             : base()
         {
             LocalizationSourceName = FacadeProjectNameConsts.LocalizationSourceName;
+            _httpRequestHeaderParser = httpRequestHeaderParser;
         }
     }
     public abstract class FacadeProjectNameApplicationBase<TEntity, TEntityDto>
@@ -20,7 +23,7 @@ namespace FacadeCompanyName.FacadeProjectName.Application
        where TEntity : class, IEntity<int>
        where TEntityDto : IEntityDto<int>
     {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, int> repository) : base(repository)
+        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, int> repository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(repository, httpRequestHeaderParser)
         {
         }
 
@@ -30,7 +33,7 @@ namespace FacadeCompanyName.FacadeProjectName.Application
        where TEntity : class, IEntity<TPrimaryKey>
        where TEntityDto : IEntityDto<TPrimaryKey>
     {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository) : base(repository)
+        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(repository, httpRequestHeaderParser)
         {
         }
 
@@ -40,7 +43,7 @@ namespace FacadeCompanyName.FacadeProjectName.Application
       where TEntity : class, IEntity<TPrimaryKey>
       where TEntityDto : IEntityDto<TPrimaryKey>
     {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository) : base(repository)
+        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(repository, httpRequestHeaderParser)
         {
         }
 
@@ -51,7 +54,7 @@ namespace FacadeCompanyName.FacadeProjectName.Application
        where TEntityDto : IEntityDto<TPrimaryKey>
        where TCreateInput : IEntityDto<TPrimaryKey>
     {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository) : base(repository)
+        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(repository, httpRequestHeaderParser)
         {
         }
 
@@ -62,7 +65,7 @@ namespace FacadeCompanyName.FacadeProjectName.Application
        where TEntityDto : IEntityDto<TPrimaryKey>
        where TUpdateInput : IEntityDto<TPrimaryKey>
     {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository) : base(repository)
+        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(repository, httpRequestHeaderParser)
         {
         }
     }
@@ -73,8 +76,8 @@ namespace FacadeCompanyName.FacadeProjectName.Application
       where TUpdateInput : IEntityDto<TPrimaryKey>
       where TGetInput : IEntityDto<TPrimaryKey>
     {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository)
-             : base(repository)
+        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser)
+             : base(repository, httpRequestHeaderParser)
         {
 
         }
@@ -89,10 +92,12 @@ namespace FacadeCompanyName.FacadeProjectName.Application
         where TGetInput : IEntityDto<TPrimaryKey>
         where TDeleteInput : IEntityDto<TPrimaryKey>
     {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository)
+        private readonly IHttpRequestHeaderParser _httpRequestHeaderParser;
+        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser)
            : base(repository)
         {
             LocalizationSourceName = FacadeProjectNameConsts.LocalizationSourceName;
+            _httpRequestHeaderParser = httpRequestHeaderParser;
         }
     }
 }
