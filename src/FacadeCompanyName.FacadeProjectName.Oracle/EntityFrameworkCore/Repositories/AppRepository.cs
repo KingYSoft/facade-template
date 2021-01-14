@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.Oracle.EntityFrameworkCore.Repositories
 {
-    public class AppQueryRepository : OracleQueryRepository, IAppQueryRepository
+    public class AppRepository : OracleQueryRepository, IAppRepository
     {
-        public AppQueryRepository(IFacadeConnectionProvider facadeConnectionProvider)
+        public AppRepository(IFacadeConnectionProvider facadeConnectionProvider)
             : base(facadeConnectionProvider)
         {
         }

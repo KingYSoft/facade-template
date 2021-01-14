@@ -6,8 +6,8 @@ namespace FacadeCompanyName.FacadeProjectName.Application.Health
 {
     public class HealthApplication : FacadeProjectNameApplicationBase, IHealthApplication
     {
-        private readonly IAppQueryRepository _appQueryRepository;
-        public HealthApplication(IAppQueryRepository appQueryRepository)
+        private readonly IAppRepository _appQueryRepository;
+        public HealthApplication(IAppRepository appQueryRepository)
         {
             _appQueryRepository = appQueryRepository;
         }
