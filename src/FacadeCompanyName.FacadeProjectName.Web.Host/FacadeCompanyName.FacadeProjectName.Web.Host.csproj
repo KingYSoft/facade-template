@@ -3,7 +3,7 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>FacadeCompanyName.FacadeProjectName.Web.Host</AssemblyName>
@@ -23,13 +23,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AspNetCore" Version="2.3.1" />
-    <PackageReference Include="Facade.AspNetCore.Zero" Version="2.3.1" /> 
-    <PackageReference Include="Facade.AspNetCore.SignalR" Version="2.3.1" />
+    <PackageReference Include="Facade.AspNetCore" Version="2.4.1" />
+    <PackageReference Include="Facade.AspNetCore.Zero" Version="2.4.1" /> 
+    <PackageReference Include="Facade.AspNetCore.SignalR" Version="2.4.1" />
 
     <PackageReference Include="IdentityModel" Version="4.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

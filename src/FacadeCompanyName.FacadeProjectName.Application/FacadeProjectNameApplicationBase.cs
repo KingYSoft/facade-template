@@ -42,6 +42,7 @@ namespace FacadeCompanyName.FacadeProjectName.Application
       : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TEntityDto, TEntityDto>
       where TEntity : class, IEntity<TPrimaryKey>
       where TEntityDto : IEntityDto<TPrimaryKey>
+        where TGetAllInput : IPagedAndSortedResultRequest
     {
         protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(repository, httpRequestHeaderParser)
         {
@@ -52,6 +53,7 @@ namespace FacadeCompanyName.FacadeProjectName.Application
        : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TCreateInput>
       where TEntity : class, IEntity<TPrimaryKey>
        where TEntityDto : IEntityDto<TPrimaryKey>
+        where TGetAllInput : IPagedAndSortedResultRequest
        where TCreateInput : IEntityDto<TPrimaryKey>
     {
         protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(repository, httpRequestHeaderParser)
@@ -63,6 +65,8 @@ namespace FacadeCompanyName.FacadeProjectName.Application
        : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, EntityDto<TPrimaryKey>>
       where TEntity : class, IEntity<TPrimaryKey>
        where TEntityDto : IEntityDto<TPrimaryKey>
+        where TGetAllInput : IPagedAndSortedResultRequest
+        where TCreateInput : IEntityDto<TPrimaryKey>
        where TUpdateInput : IEntityDto<TPrimaryKey>
     {
         protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(repository, httpRequestHeaderParser)
@@ -73,6 +77,8 @@ namespace FacadeCompanyName.FacadeProjectName.Application
       : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, EntityDto<TPrimaryKey>>
       where TEntity : class, IEntity<TPrimaryKey>
       where TEntityDto : IEntityDto<TPrimaryKey>
+        where TGetAllInput : IPagedAndSortedResultRequest
+        where TCreateInput : IEntityDto<TPrimaryKey>
       where TUpdateInput : IEntityDto<TPrimaryKey>
       where TGetInput : IEntityDto<TPrimaryKey>
     {
@@ -88,6 +94,8 @@ namespace FacadeCompanyName.FacadeProjectName.Application
         IFacadeProjectNameApplicationBase<TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, TDeleteInput>
         where TEntity : class, IEntity<TPrimaryKey>
         where TEntityDto : IEntityDto<TPrimaryKey>
+        where TGetAllInput : IPagedAndSortedResultRequest
+        where TCreateInput : IEntityDto<TPrimaryKey>
         where TUpdateInput : IEntityDto<TPrimaryKey>
         where TGetInput : IEntityDto<TPrimaryKey>
         where TDeleteInput : IEntityDto<TPrimaryKey>
