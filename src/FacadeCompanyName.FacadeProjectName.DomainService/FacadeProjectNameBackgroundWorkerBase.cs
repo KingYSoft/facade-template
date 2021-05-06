@@ -1,16 +1,18 @@
-﻿using Abp.Quartz;
+﻿using Abp.Threading.BackgroundWorkers;
+using Abp.Threading.Timers;
 using FacadeCompanyName.FacadeProjectName.DomainService.Interceptors;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService
 {
     /// <summary>
-    /// 任务调度作业
+    /// 后台工人
     /// </summary>
     [JobInterceptor]
-    public abstract class FacadeProjectNameScheduleJobBase : JobBase
+    public abstract class FacadeProjectNameBackgroundWorkerBase : PeriodicBackgroundWorkerBase
     {
-        protected FacadeProjectNameScheduleJobBase() : base()
+        protected FacadeProjectNameBackgroundWorkerBase(AbpTimer timer)
+              : base(timer)
         {
             LocalizationSourceName = FacadeProjectNameConsts.LocalizationSourceName;
         }

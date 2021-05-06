@@ -4,6 +4,10 @@ using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService
 {
+    /// <summary>
+    /// 后台工作队列
+    /// </summary>
+    /// <typeparam name="TArgs"></typeparam>
     [JobInterceptor]
     public abstract class FacadeProjectNameBackgroundJobBase<TArgs> : AsyncBackgroundJob<TArgs>
     {
