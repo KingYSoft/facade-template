@@ -4,7 +4,7 @@
 
 - facade 框架基于 aspnet core abp 开发的框架，使用 dapper 支持 Oracle。
 
-- 支持 .net core 3.0
+- 支持 .net core 5.0
 
 # 功能
 
