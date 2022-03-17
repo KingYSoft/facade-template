@@ -6,6 +6,8 @@ using Abp.Modules;
 using Abp.Net.Mail;
 using Abp.Reflection.Extensions;
 using Abp.TestBase;
+using Castle.Facilities.Logging;
+using Facade.NLogger;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
@@ -23,8 +25,16 @@ namespace FacadeCompanyName.FacadeProjectName.Tests
 
         public override void PreInitialize()
         {
+            IocManager.IocContainer.AddFacility<LoggingFacility>(f =>
+            {
+                f.UseFacadeNLog($"\\NLog.config");
+            });
+            IocManager.Register<IFacadeConfiguration, FacadeConfiguration>(Abp.Dependency.DependencyLifeStyle.Singleton);
+            var facadeConfiguration = IocManager.Resolve<FacadeConfiguration>();
+            facadeConfiguration.AppName = "FacadeProjectName_Tests";
+
             // Disable static mapper usage since it breaks unit tests (see https://github.com/aspnetboilerplate/aspnetboilerplate/issues/2052)
-            Configuration.Modules.AbpAutoMapper().UseStaticMapper = false;
+            // Configuration.Modules.AbpAutoMapper().UseStaticMapper = false;
 
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
             Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
@@ -38,8 +48,15 @@ namespace FacadeCompanyName.FacadeProjectName.Tests
 
         public override void Initialize()
         {
-            IocManager.RegisterAssemblyByConvention(typeof(FacadeProjectNameTestModule).GetAssembly());
+            var thisAssembly = typeof(FacadeProjectNameTestModule).GetAssembly();
+            IocManager.RegisterAssemblyByConvention(thisAssembly);
             //  ServiceCollectionRegistrar.Register(IocManager);
+
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(
+                // Scan the assembly for classes which inherit from AutoMapper.Profile
+                //cfg => cfg.AddProfiles(thisAssembly)
+                cfg => cfg.AddMaps(thisAssembly)
+            );
         }
     }
 }

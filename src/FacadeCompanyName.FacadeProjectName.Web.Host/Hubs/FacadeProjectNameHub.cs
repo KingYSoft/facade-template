@@ -1,11 +1,11 @@
-﻿using Abp.AspNetCore.SignalR.Hubs;
-using Abp.RealTime;
+﻿using Abp.RealTime;
+using FacadeCompanyName.FacadeProjectName.Web.Core.Hubs;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Host.Hubs
 {
-    public class FacadeProjectNameHub : AbpCommonHub
+    public class FacadeProjectNameHub : FacadeProjectNameHubCore
     {
         public FacadeProjectNameHub(IOnlineClientManager onlineClientManager, IOnlineClientInfoProvider onlineClientInfoProvider)
             : base(onlineClientManager, onlineClientInfoProvider)

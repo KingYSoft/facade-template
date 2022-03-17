@@ -13,6 +13,10 @@
   <ItemGroup>
     <ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.DomainService.Share\FacadeCompanyName.FacadeProjectName.DomainService.Share.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
  
 
 </Project>

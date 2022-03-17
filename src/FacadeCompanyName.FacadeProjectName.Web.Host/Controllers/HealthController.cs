@@ -1,6 +1,7 @@
 ﻿using Facade.AspNetCore.Mvc.Authorization;
 using Facade.Core.Web;
 using FacadeCompanyName.FacadeProjectName.Application.Health;
+using FacadeCompanyName.FacadeProjectName.Web.Core.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;

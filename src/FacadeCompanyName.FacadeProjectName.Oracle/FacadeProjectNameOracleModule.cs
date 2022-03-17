@@ -1,7 +1,7 @@
 ﻿using Abp.Modules;
 using Abp.Reflection.Extensions;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
-using FacadeCompanyName.FacadeProjectName.Oracle.EntityFrameworkCore.Interceptors;
+using FacadeCompanyName.FacadeProjectName.Oracle.Interceptors;
 
 namespace FacadeCompanyName.FacadeProjectName.Oracle
 {

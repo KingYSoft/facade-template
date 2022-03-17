@@ -9,7 +9,7 @@ using Facade.Core.Configuration;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService.Folders;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
-using FacadeCompanyName.FacadeProjectName.Web.Host.Authentication.JwtBearer;
+using FacadeCompanyName.FacadeProjectName.Web.Core.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -40,7 +40,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
         }
         /// <summary>
         /// 预加载
-        ///<see cref="DomainService.Share.Jobs.BackJob"/>
         /// </summary>
         public override void PreInitialize()
         {

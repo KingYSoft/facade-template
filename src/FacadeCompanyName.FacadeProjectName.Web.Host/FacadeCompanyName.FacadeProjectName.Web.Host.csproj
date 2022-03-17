@@ -7,41 +7,29 @@
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>FacadeCompanyName.FacadeProjectName.Web.Host</AssemblyName>
-    <OutputType>Exe</OutputType>
     <PackageId>FacadeCompanyName.FacadeProjectName.Web.Host</PackageId>
     <UserSecretsId>FacadeCompanyName-FacadeProjectName-56C2EF2F-ABD6-4EFC-AAF2-2E81C34E8F11</UserSecretsId>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\swagger\ui\index.html" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\swagger\ui\abp.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wwwroot\swagger\ui\abp.swagger.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="wwwroot\swagger\ui\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AspNetCore" Version="2.4.2" />
-    <PackageReference Include="Facade.AspNetCore.Zero" Version="2.4.2" /> 
-    <PackageReference Include="Facade.AspNetCore.SignalR" Version="2.4.2" />
-
-    <PackageReference Include="IdentityModel" Version="4.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
-
-    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
+    <ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.Web.Core\FacadeCompanyName.FacadeProjectName.Web.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.Application\FacadeCompanyName.FacadeProjectName.Application.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\swagger\ui\abp.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

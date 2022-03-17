@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>FacadeCompanyName.FacadeProjectName.Web.Core</AssemblyName>
+    <PackageId>FacadeCompanyName.FacadeProjectName.Web.Core</PackageId>
+    <UserSecretsId>FacadeCompanyName-FacadeProjectName-56C2EF2F-ABD6-4EFC-AADE-2E81C34E8F11</UserSecretsId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Facade.AspNetCore.SignalR" Version="2.7.0" />
+    <PackageReference Include="Facade.AspNetCore" Version="2.7.0" />
+    <PackageReference Include="Facade.AspNetCore.Zero" Version="2.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.1" />
+
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.Application\FacadeCompanyName.FacadeProjectName.Application.csproj" />
+  </ItemGroup>
+
+</Project>

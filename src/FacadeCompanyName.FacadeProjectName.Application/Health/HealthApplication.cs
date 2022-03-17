@@ -1,5 +1,5 @@
 ﻿using Facade.Core.Web;
-using FacadeCompanyName.FacadeProjectName.DomainService.Share;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share.App;
 using System;
 using System.Threading.Tasks;
 
