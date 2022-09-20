@@ -16,7 +16,8 @@ using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/tokenauth")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class TokenAuthController : FacadeProjectNameControllerBase
     {
         private readonly IFacadeLoginManager _facadeLoginManager;
@@ -28,6 +29,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
         }
         [HttpPost]
         [NoToken]
+        [Route("authenticate")]
         public async Task<JsonResponse<AuthenticateOutput>> Authenticate([FromBody] AuthenticateInput input)
         {
             if (input.UserNameOrEmailAddress == "admin" && input.Password == "admin")

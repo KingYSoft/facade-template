@@ -24,7 +24,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
         /// <param name="appConfiguration"></param>
         public static void ConfigureFacadeProjectNameService(this IServiceCollection services, IConfigurationRoot appConfiguration)
         {
-            services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Latest).AddNewtonsoftJson();
+            services.AddControllers().AddNewtonsoftJson();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

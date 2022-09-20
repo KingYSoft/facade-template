@@ -103,7 +103,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                     options.IocManager.IocContainer.AddFacility<LoggingFacility>(f =>
                     {
                         f.UseFacadeNLog($"{_env.ContentRootPath}\\NLog.config");
-                        //f.UseFacadeNLog($"{_env.ContentRootPath}\\NLog.config",_appConfiguration["Exceptionless:ServerUrl"], _appConfiguration["Exceptionless:ApiKey"]);
                     });
                     var propInjector = options.IocManager.IocContainer.Kernel.ComponentModelBuilder
                     .Contributors
