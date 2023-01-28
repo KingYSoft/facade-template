@@ -3,7 +3,7 @@
   <Import Project="..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AssemblyName>FacadeCompanyName.FacadeProjectName.DomainService.Share</AssemblyName>
     <PackageId>FacadeCompanyName.FacadeProjectName.DomainService.Share</PackageId>
@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.Dapper.Oracle" Version="3.0.5" />
-    <PackageReference Include="Facade.NLogger" Version="3.0.5" />
+    <PackageReference Include="Facade.Dapper.Oracle" Version="4.0.1" />
+    <PackageReference Include="Facade.NLogger" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>

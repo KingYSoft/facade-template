@@ -78,13 +78,13 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
 
         private bool IsRedLock(MethodInfo methodInfo)
         {
-            var attrs = methodInfo.GetCustomAttributes(true).OfType<UowLockInterceptorAttribute>().ToArray();
+            var attrs = methodInfo.GetCustomAttributes(true).OfType<RedLockAttribute>().ToArray();
             if (attrs.Length > 0)
             {
                 return true;
             }
 
-            attrs = methodInfo.DeclaringType.GetTypeInfo().GetCustomAttributes(true).OfType<UowLockInterceptorAttribute>().ToArray();
+            attrs = methodInfo.DeclaringType.GetTypeInfo().GetCustomAttributes(true).OfType<RedLockAttribute>().ToArray();
             if (attrs.Length > 0)
             {
                 return true;
