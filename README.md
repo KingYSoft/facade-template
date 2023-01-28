@@ -2,7 +2,7 @@
 
 - facade 框架基于 aspnet core abp 开发的框架，使用 Dapper 支持 Oracle。
 
-- 支持 .net core 6.0
+- 支持 .net core 7.0
 
 # 功能
 
@@ -12,7 +12,7 @@
 - 支持 AutoMapper
 - 支持 Quartz
 - 支持 Dapper
-- 支持 Oracle
+- 支持 Oracle、SqlServer、Mysql
 - 支持 Nlog
 - 支持 Redis
 - 支持 Swagger 2.0，如： `app.UseSwagger(c => c.SerializeAsV2 = true);`
