@@ -13,13 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.Dapper.Oracle" Version="4.0.1" />
-    <PackageReference Include="Facade.NLogger" Version="4.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Enums\" />
-    <Folder Include="Repositories\" />
+    <PackageReference Include="Facade.Dapper.Oracle" Version="4.1.1" />
+    <PackageReference Include="Facade.NLogger" Version="4.1.1" />
   </ItemGroup>
  
 

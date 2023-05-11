@@ -2,6 +2,7 @@
 using Abp.Dependency;
 using Abp.Domain.Services;
 using Abp.IO;
+using Abp.Localization;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Threading.BackgroundWorkers;
@@ -67,6 +68,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(FacadeProjectNameConsts.ConnectionStringName);
             Configuration.UnitOfWork.Timeout = new TimeSpan(0, 0, 30);
 
+            Configuration.Localization.Languages.Add(new LanguageInfo("zh", "中文简体", isDefault: true));
+            Configuration.Localization.Languages.Add(new LanguageInfo("en", "English"));
             ConfigureTokenAuth();
 
         }

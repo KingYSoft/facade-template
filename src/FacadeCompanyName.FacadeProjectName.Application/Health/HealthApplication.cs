@@ -1,6 +1,4 @@
-﻿using Facade.Core.Web;
-using FacadeCompanyName.FacadeProjectName.DomainService.Share.App;
-using System;
+﻿using FacadeCompanyName.FacadeProjectName.DomainService.Share.App;
 using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.Application.Health
@@ -8,14 +6,15 @@ namespace FacadeCompanyName.FacadeProjectName.Application.Health
     public class HealthApplication : FacadeProjectNameApplicationBase, IHealthApplication
     {
         private readonly IAppRepository _appQueryRepository;
-        public HealthApplication(IAppRepository appQueryRepository, IHttpRequestHeaderParser httpRequestHeaderParser) : base(httpRequestHeaderParser)
+        public HealthApplication(IAppRepository appQueryRepository)
         {
             _appQueryRepository = appQueryRepository;
         }
 
-        public async Task<DateTime> Check()
+        public async Task<string> Check()
         {
-            return await _appQueryRepository.ExecuteScalarAsync<DateTime>("select sysdate from dual");
+            // oracle sql
+            return await _appQueryRepository.ExecuteScalarAsync<string>("select to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss') from dual");
         }
     }
 }

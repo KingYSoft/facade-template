@@ -37,8 +37,10 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
 
             services.Configure<MvcOptions>((op) =>
             {
-                op.Filters.AddService(typeof(DebounceActionFilter));
-                op.Filters.AddService(typeof(RedLockActionFilter));
+                // enable debounce or redlock
+
+                //op.Filters.AddService(typeof(DebounceActionFilter));
+                //op.Filters.AddService(typeof(RedLockActionFilter));
             });
 
             services.AddSignalR();
@@ -71,7 +73,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
         {
             app.UseFacade(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
 
-            app.UseMiddleware<DemoMiddleware>();
             //app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions
             {
@@ -86,6 +87,9 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
             app.UseAuthorization();
 
             app.UseAbpRequestLocalization();
+
+            // demo middleware
+            app.UseMiddleware<DemoMiddleware>();
         }
     }
 }

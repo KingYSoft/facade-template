@@ -40,7 +40,7 @@ namespace FacadeCompanyName.FacadeProjectName.Tests
             Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
             Configuration.MultiTenancy.IsEnabled = FacadeProjectNameConsts.MultiTenancyEnabled;
             Configuration.DefaultNameOrConnectionString = "Data Source=ORCL;Persist Security Info=True;User Id=ORCL;Password=ORCL;";
-            Configuration.Localization.Languages.Add(new LanguageInfo("zh-CN", "中文简体", isDefault: true));
+            Configuration.Localization.Languages.Add(new LanguageInfo("zh", "中文简体", isDefault: true));
             Configuration.Localization.Languages.Add(new LanguageInfo("en", "English"));
 
             Configuration.ReplaceService<IEmailSender, NullEmailSender>(DependencyLifeStyle.Transient);

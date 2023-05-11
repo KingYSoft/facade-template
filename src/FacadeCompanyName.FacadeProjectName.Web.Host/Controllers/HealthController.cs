@@ -23,9 +23,9 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
         [Route("check")]
         [HttpGet]
         [NoToken]
-        public async Task<JsonResponse<DateTime>> Check()
+        public async Task<JsonResponse<string>> Check()
         {
-            return new JsonResponse<DateTime>(true, L("WelcomeMessage"))
+            return new JsonResponse<string>(true, L("WelcomeMessage"))
             {
                 Data = await _healthApplication.Check()
             };

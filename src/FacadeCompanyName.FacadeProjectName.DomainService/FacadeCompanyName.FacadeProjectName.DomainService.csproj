@@ -13,12 +13,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Localization\SourceFiles\FacadeProjectName-zh-CN.xml" />
+    <None Remove="Localization\SourceFiles\FacadeProjectName-zh.xml" />
     <None Remove="Localization\SourceFiles\FacadeProjectName.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Localization\SourceFiles\FacadeProjectName-zh-CN.xml">
+    <EmbeddedResource Include="Localization\SourceFiles\FacadeProjectName-zh.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\SourceFiles\FacadeProjectName.xml">
@@ -27,17 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AutoMapper" Version="4.0.1" />
-    <PackageReference Include="Facade.Quartz" Version="4.0.1" />
+    <PackageReference Include="Facade.AutoMapper" Version="4.1.1" />
+    <PackageReference Include="Facade.Quartz" Version="4.1.1" />
     <PackageReference Include="RedLock.net" Version="2.3.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.Oracle\FacadeCompanyName.FacadeProjectName.Oracle.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
