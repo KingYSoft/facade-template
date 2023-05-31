@@ -1,8 +1,10 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Abp.Threading.BackgroundWorkers;
 using Facade.AutoMapper;
 using Facade.Quartz;
+using FacadeCompanyName.FacadeProjectName.DomainService.BackgroundWorkers;
 using FacadeCompanyName.FacadeProjectName.DomainService.Localization;
 using FacadeCompanyName.FacadeProjectName.Oracle;
 
@@ -35,5 +37,12 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService
             );
         }
 
+        public override void PostInitialize()
+        {
+            if (Configuration.BackgroundJobs.IsJobExecutionEnabled)
+            {
+                IocManager.Resolve<IBackgroundWorkerManager>().Add(IocManager.Resolve<DemoWorker>());
+            }
+        }
     }
 }

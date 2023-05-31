@@ -7,12 +7,15 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.BackgroundWorkers
     /// <summary>
     /// 后台工人
     /// </summary>
-    public abstract class FacadeProjectNameBackgroundWorkerBase : PeriodicBackgroundWorkerBase
+    public abstract class FacadeProjectNameBackgroundWorkerBase : AsyncPeriodicBackgroundWorkerBase
     {
-        protected FacadeProjectNameBackgroundWorkerBase(AbpTimer timer)
+        protected FacadeProjectNameBackgroundWorkerBase(AbpAsyncTimer timer)
              : base(timer)
         {
             LocalizationSourceName = FacadeProjectNameConsts.LocalizationSourceName;
+
+            // Default value: 5000 (5 seconds). 
+            Timer.Period = 5000;
         }
     }
 }
