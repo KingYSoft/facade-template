@@ -4,6 +4,7 @@ using Abp.Threading;
 using Castle.Core.Logging;
 using Castle.DynamicProxy;
 using System;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -75,12 +76,30 @@ namespace FacadeCompanyName.FacadeProjectName.Oracle.Interceptors
             }
         }
 
-        private void ExceptionHanding(Exception ex, string fullName, object args)
+        private void ExceptionHanding(Exception ex, string fullName, object[] args)
         {
             if (ex != null)
             {
-                _logger.Error(ex.Message + $"\r\n{fullName}:\r\n" + args.ToJsonString().Replace("\r\n", " "), ex);
-                throw ex;
+                var msg = string.Empty;
+                if (args != null)
+                {
+                    var s = args.ToList<object>();
+                    if (s.Any())
+                    {
+                        if (s[0] is string)
+                        {
+                            msg = "  " + s[0] as string;
+                            s.RemoveAt(0);
+                            if (s.Any())
+                            {
+                                msg += Environment.NewLine;
+                                msg += "  执行sql语句参数：" + s.ToJsonString();
+                            }
+                        }
+                    }
+                }
+
+                _logger.Error($"{ex.Message}{Environment.NewLine}  {fullName}，执行sql语句失败：{Environment.NewLine}" + msg);
             }
         }
 
