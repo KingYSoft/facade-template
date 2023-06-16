@@ -47,14 +47,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
 
         public override void PreInitialize()
         {
-            Configuration.UnitOfWork.ConventionalUowSelectors.Add(t =>
-                typeof(IDomainService).IsAssignableFrom(t) ||
-                typeof(IBackgroundJob<>).IsAssignableFrom(t) ||
-                typeof(IBackgroundWorker).IsAssignableFrom(t) ||
-                typeof(IJob).IsAssignableFrom(t) ||
-                typeof(IBackgroundJobStore).IsAssignableFrom(t));
-
-
             IocManager.RegisterIfNot<IFacadeConfiguration, FacadeConfiguration>(Abp.Dependency.DependencyLifeStyle.Singleton);
             var facadeConfiguration = IocManager.Resolve<FacadeConfiguration>();
             _appConfiguration.GetSection("FacadeConfiguration").Bind(facadeConfiguration);
