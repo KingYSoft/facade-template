@@ -1,14 +1,10 @@
-﻿using Abp.BackgroundJobs;
-using Abp.Dependency;
-using Abp.Domain.Services;
+﻿using Abp.Dependency;
 using Abp.IO;
 using Abp.Localization;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using Abp.Threading.BackgroundWorkers;
 using Facade.AspNetCore;
 using Facade.AspNetCore.Configuration;
-using Facade.AspNetCore.SignalR;
 using Facade.AspNetCore.Zero;
 using Facade.Core.Configuration;
 using FacadeCompanyName.FacadeProjectName.Application;
@@ -18,7 +14,6 @@ using FacadeCompanyName.FacadeProjectName.Web.Core.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Quartz;
 using System;
 using System.IO;
 using System.Text;
@@ -28,7 +23,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
     [DependsOn(
                 typeof(FacadeProjectNameApplicationModule),
                 typeof(FacadeAspNetCoreModule),
-                typeof(FacadeAspNetCoreSignalRModule),
                 typeof(FacadeAspNetCoreZeroModule)
                 )]
     public class FacadeProjectNameWebCoreModule : AbpModule
