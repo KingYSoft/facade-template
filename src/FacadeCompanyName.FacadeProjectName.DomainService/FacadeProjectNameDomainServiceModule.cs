@@ -41,7 +41,8 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService
         {
             if (Configuration.BackgroundJobs.IsJobExecutionEnabled)
             {
-                IocManager.Resolve<IBackgroundWorkerManager>().Add(IocManager.Resolve<DemoWorker>());
+                //Worker DI.
+                //IocManager.Resolve<IBackgroundWorkerManager>().Add(IocManager.Resolve<DemoWorker>());
             }
         }
     }
