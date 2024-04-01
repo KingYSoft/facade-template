@@ -3,6 +3,7 @@ using Abp.Dependency;
 using Abp.Extensions;
 using Abp.Json;
 using Abp.Runtime.Caching;
+using Abp.Threading.Extensions;
 using Castle.Core.Logging;
 using Facade.AspNetCore.Mvc.Authorization;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
@@ -13,6 +14,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
@@ -55,14 +57,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
                 return;
             }
 
-            var noDebounce = methodInfo.GetCustomAttributes(true).OfType<NoDebounceAttribute>().ToArray();
-            if (noDebounce.Length > 0)
-            {
-                await next();
-                return;
-            }
-            noDebounce = methodInfo.DeclaringType.GetTypeInfo().GetCustomAttributes(true).OfType<NoDebounceAttribute>().ToArray();
-            if (noDebounce.Length > 0)
+
+            if (!IsDebounce(methodInfo))
             {
                 await next();
                 return;
@@ -92,22 +88,27 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
                 #endregion
 
                 var cacheKey = sb.ToString().ToMd5();
-                var cacheValue = await DebounceCache.GetOrDefaultAsync(cacheKey);
-                if (cacheValue.IsNullOrWhiteSpace())
+                using (await DebounceLock.SemaphoreSlim.LockAsync())
                 {
-                    var result = await next();
-                    if (result.Result is ObjectResult)
+                    var cacheValue = await DebounceCache.GetOrDefaultAsync(cacheKey);
+                    if (cacheValue.IsNullOrWhiteSpace())
                     {
-                        var res = result.Result as ObjectResult;
-                        await DebounceCache.SetAsync(cacheKey, JsonSerializationHelper.SerializeWithType(res.Value), TimeSpan.FromSeconds(2));
+                        var result = await next();
+                        if (result.Result is ObjectResult)
+                        {
+                            var res = result.Result as ObjectResult;
+                            await DebounceCache.SetAsync(cacheKey, JsonSerializationHelper.SerializeWithType(res.Value), TimeSpan.FromSeconds(2));
+                        }
                     }
-                }
-                else
-                {
-                    var obj = new ObjectResult(JsonSerializationHelper.DeserializeWithType(cacheValue));
-                    context.Result = obj;
-                    _logger.Debug("Debounce：" + cacheValue);
-                    return;
+                    else
+                    {
+                        var obj = new ObjectResult(JsonSerializationHelper.DeserializeWithType(cacheValue));
+                        context.Result = obj;
+                        var d_type = context.ActionDescriptor.GetMethodInfo().DeclaringType;
+                        var methodName = context.ActionDescriptor.GetMethodInfo().Name;
+                        _logger.Debug($"Debounce-{d_type.FullName}-{methodName}：" + cacheKey);
+                        return;
+                    }
                 }
             }
             catch (Exception ex)
@@ -117,5 +118,27 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
             }
 
         }
+
+        private static bool IsDebounce(MethodInfo methodInfo)
+        {
+            var attrs = methodInfo.GetCustomAttributes(true).OfType<DebounceAttribute>().ToArray();
+            if (attrs.Length > 0)
+            {
+                return true;
+            }
+
+            attrs = methodInfo.DeclaringType.GetTypeInfo().GetCustomAttributes(true).OfType<DebounceAttribute>().ToArray();
+            if (attrs.Length > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+    }
+
+    public static class DebounceLock
+    {
+        public static readonly SemaphoreSlim SemaphoreSlim = new SemaphoreSlim(1, 1);
     }
 }

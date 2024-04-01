@@ -1,9 +1,11 @@
-﻿using Abp.IO;
+﻿using Abp.AspNetCore.SignalR.Notifications;
+using Abp.IO;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Facade.AspNetCore.Configuration;
 using Facade.Core.Configuration;
 using FacadeCompanyName.FacadeProjectName.Web.Core;
+using FacadeCompanyName.FacadeProjectName.Web.Host.Hubs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
@@ -35,6 +37,12 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(FacadeProjectNameWebHostModule).GetAssembly());
+            //hub 被继承后，HubconnectionStore 连接数是空
+            if (Configuration.Notifications.Notifiers.Contains(typeof(SignalRRealTimeNotifier)))
+            {
+                Configuration.Notifications.Notifiers.Remove(typeof(SignalRRealTimeNotifier));
+            }
+            Configuration.Notifications.Notifiers.Add<NewSignalRRealTimeNotifier>();
         }
         public override void PostInitialize()
         { 

@@ -39,7 +39,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
             {
                 // enable debounce or redlock
 
-                //op.Filters.AddService(typeof(DebounceActionFilter));
+                op.Filters.AddService(typeof(DebounceActionFilter));
                 //op.Filters.AddService(typeof(RedLockActionFilter));
             });
 

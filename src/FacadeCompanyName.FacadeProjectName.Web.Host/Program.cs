@@ -28,6 +28,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                   {
                       options.Limits.MaxRequestBodySize = null;
                       options.Limits.MaxRequestBufferSize = null;
+                      options.Limits.MaxResponseBufferSize = null;
                   });
         }
     }

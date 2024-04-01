@@ -29,7 +29,6 @@
   <ItemGroup>
     <PackageReference Include="Facade.AutoMapper" Version="4.4.4" />
     <PackageReference Include="Facade.Quartz" Version="4.4.4" />
-    <PackageReference Include="RedLock.net" Version="2.3.2" />
   </ItemGroup>
 
   <ItemGroup>

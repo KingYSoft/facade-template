@@ -3,7 +3,7 @@
 namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class NoDebounceAttribute : Attribute
+    public class DebounceAttribute : Attribute
     {
     }
 }

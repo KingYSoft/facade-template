@@ -44,8 +44,6 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
             IocManager.RegisterIfNot<IFacadeConfiguration, FacadeConfiguration>(Abp.Dependency.DependencyLifeStyle.Singleton);
             var facadeConfiguration = IocManager.Resolve<FacadeConfiguration>();
             _appConfiguration.GetSection("FacadeConfiguration").Bind(facadeConfiguration);
-            facadeConfiguration.Redis_Host = _appConfiguration["Redis:Host"] ?? "localhost";
-            facadeConfiguration.Redis_Port = int.Parse(_appConfiguration["Redis:Port"] ?? "6379");
 
             Configuration.Auditing.IsEnabled = false;
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
