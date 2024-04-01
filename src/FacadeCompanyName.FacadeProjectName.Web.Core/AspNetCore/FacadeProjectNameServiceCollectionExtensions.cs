@@ -24,7 +24,11 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
         /// <param name="appConfiguration"></param>
         public static void ConfigureFacadeProjectNameService(this IServiceCollection services, IConfigurationRoot appConfiguration)
         {
-            services.AddControllers().AddNewtonsoftJson();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.OutputFormatterMemoryBufferThreshold = 1024 * 1024;
+                options.InputFormatterMemoryBufferThreshold = 1024 * 1024;
+            });
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
