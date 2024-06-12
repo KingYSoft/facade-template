@@ -44,6 +44,9 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
             IocManager.RegisterIfNot<IFacadeConfiguration, FacadeConfiguration>(Abp.Dependency.DependencyLifeStyle.Singleton);
             var facadeConfiguration = IocManager.Resolve<FacadeConfiguration>();
             _appConfiguration.GetSection("FacadeConfiguration").Bind(facadeConfiguration);
+            facadeConfiguration.AppRootPath = _env.ContentRootPath;
+            facadeConfiguration.IsDevelopment = _env.EnvironmentName.Equals("Development", StringComparison.OrdinalIgnoreCase);
+            facadeConfiguration.AppEnvName = _env.EnvironmentName;
 
             Configuration.Auditing.IsEnabled = false;
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;
@@ -52,6 +55,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(FacadeProjectNameConsts.ConnectionStringName);
             Configuration.UnitOfWork.Timeout = new TimeSpan(0, 0, 30);
 
+            Configuration.Localization.Languages.Clear();
             Configuration.Localization.Languages.Add(new LanguageInfo("zh", "中文简体", isDefault: true));
             Configuration.Localization.Languages.Add(new LanguageInfo("en", "English"));
             ConfigureTokenAuth();

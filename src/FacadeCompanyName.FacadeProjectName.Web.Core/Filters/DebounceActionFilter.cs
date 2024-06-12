@@ -70,16 +70,19 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
                 var requestParams = context.ActionArguments;
                 #region 获取参数及token
                 var sb = new StringBuilder();
+                sb.Append(methodInfo.DeclaringType.FullName);
+                sb.Append(methodInfo.Name);
                 sb.Append(request.Method);
+                sb.Append(request.Host.ToString());
+                sb.Append(request.Path.ToString());
+                sb.Append(request.Protocol);
 
+                //_logger.Debug($"Debounce-{methodInfo.DeclaringType.FullName}-{methodInfo.Name}：" + Environment.NewLine + sb.ToString());
+                sb.Append(request.QueryString.ToString());
                 foreach (var kvp in requestParams)
                 {
                     sb.Append(kvp.Key).Append(kvp.Value.ToJsonString());
                 }
-                sb.Append(request.Host.ToString());
-                sb.Append(request.Path.ToString());
-                sb.Append(request.QueryString.ToString());
-                sb.Append(request.Protocol);
                 if (request.Headers.TryGetValue("Authorization", out var v))
                 {
                     var token = v.ToString();
@@ -104,9 +107,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
                     {
                         var obj = new ObjectResult(JsonSerializationHelper.DeserializeWithType(cacheValue));
                         context.Result = obj;
-                        var d_type = context.ActionDescriptor.GetMethodInfo().DeclaringType;
-                        var methodName = context.ActionDescriptor.GetMethodInfo().Name;
-                        _logger.Debug($"Debounce-{d_type.FullName}-{methodName}：" + cacheKey);
+                        //context.Result = new ObjectResult(new JsonResponse(false, "数据正在处理中，请稍后再试..."));
+                        _logger.Debug($"Debounce-{methodInfo.DeclaringType.FullName}-{methodInfo.Name}：" + cacheKey);
                         return;
                     }
                 }

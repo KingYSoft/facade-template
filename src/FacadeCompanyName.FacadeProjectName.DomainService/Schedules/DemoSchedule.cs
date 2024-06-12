@@ -11,7 +11,7 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Schedules
         {
             _logger = logger;
         }
-        public override async Task Execute(IJobExecutionContext context)
+        public override async Task ExecuteJobAsync(IJobExecutionContext context)
         {
             _logger.Debug("DemoSchedule 执行了");
 
