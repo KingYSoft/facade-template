@@ -1,5 +1,4 @@
 ﻿using FacadeCompanyName.FacadeProjectName.Application.Health;
-using Shouldly;
 using System.Threading.Tasks;
 using Xunit;
 namespace FacadeCompanyName.FacadeProjectName.Tests.Health

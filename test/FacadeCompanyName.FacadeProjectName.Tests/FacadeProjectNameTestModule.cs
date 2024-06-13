@@ -30,7 +30,7 @@ namespace FacadeCompanyName.FacadeProjectName.Tests
         {
             IocManager.IocContainer.AddFacility<LoggingFacility>(f =>
             {
-                f.UseFacadeNLog($"\\NLog.config");
+                f.UseFacadeNLog($"{Directory.GetCurrentDirectory()}\\NLog.config");
             });
             IocManager.Register<IFacadeConfiguration, FacadeConfiguration>(Abp.Dependency.DependencyLifeStyle.Singleton);
             var facadeConfiguration = IocManager.Resolve<FacadeConfiguration>();

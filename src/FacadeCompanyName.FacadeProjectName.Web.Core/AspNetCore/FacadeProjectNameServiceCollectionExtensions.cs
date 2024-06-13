@@ -37,10 +37,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
 
             services.Configure<MvcOptions>((op) =>
             {
-                // enable debounce or redlock
-
+                // enable debounce
                 op.Filters.AddService(typeof(DebounceActionFilter));
-                //op.Filters.AddService(typeof(RedLockActionFilter));
             });
 
             services.AddSignalR();
@@ -77,8 +75,9 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = (c) =>
-                { // 资源文件跨域
-                    c.Context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+                {
+                    // 资源文件跨域
+                    c.Context.Response.Headers.AccessControlAllowOrigin = "*";
                 }
             });
             app.UseRouting();
