@@ -14,8 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AspNetCore" Version="5.1.1" />
-    <PackageReference Include="Facade.AspNetCore.Zero" Version="5.1.1" />
+    <PackageReference Include="Facade.AspNetCore" Version="5.1.2" />
+    <PackageReference Include="Facade.AspNetCore.Zero" Version="5.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
 

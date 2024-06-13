@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using System.IO;
+using System;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Host
 {
@@ -16,7 +16,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                 .AddJsonFile("hosting.json", optional: true)
                 .Build();
             string url = config[urls] ?? "http://*:21021";

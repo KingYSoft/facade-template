@@ -10,7 +10,6 @@ using Castle.Facilities.Logging;
 using Facade.NLogger;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
-using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 
@@ -21,21 +20,21 @@ namespace FacadeCompanyName.FacadeProjectName.Tests
            typeof(FacadeProjectNameApplicationModule)
            )]
     public class FacadeProjectNameTestModule : AbpModule
-    { 
+    {
         public FacadeProjectNameTestModule()
-        { 
+        {
         }
 
         public override void PreInitialize()
         {
             IocManager.IocContainer.AddFacility<LoggingFacility>(f =>
             {
-                f.UseFacadeNLog($"{Directory.GetCurrentDirectory()}\\NLog.config");
+                f.UseFacadeNLog($"{AppDomain.CurrentDomain.BaseDirectory}\\NLog.config");
             });
             IocManager.Register<IFacadeConfiguration, FacadeConfiguration>(Abp.Dependency.DependencyLifeStyle.Singleton);
             var facadeConfiguration = IocManager.Resolve<FacadeConfiguration>();
             facadeConfiguration.AppName = "FacadeProjectName_Tests";
-            facadeConfiguration.AppRootPath = Directory.GetCurrentDirectory();
+            facadeConfiguration.AppRootPath = AppDomain.CurrentDomain.BaseDirectory;
             facadeConfiguration.IsDevelopment = true;
             facadeConfiguration.AppEnvName = "Development";
 
