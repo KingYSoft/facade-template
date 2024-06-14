@@ -31,7 +31,12 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
         /// 预加载
         /// </summary>
         public override void PreInitialize()
-        { 
+        {
+            // set licence
+            Facade.Configuration.FacadeConfigurationExtensions.Facade(Configuration.Modules).Configure(options =>
+            {
+                options.Licence = "";
+            });
         }
 
         public override void Initialize()
