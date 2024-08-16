@@ -33,7 +33,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
         public override void PreInitialize()
         {
             // set licence
-            Facade.Configuration.FacadeConfigurationExtensions.Facade(Configuration.Modules).Configure(options =>
+            Facade.Configuration.FacadeCoreConfigurationExtensions.Facade(Configuration.Modules).Configure(options =>
             {
                 options.Licence = "";
             });

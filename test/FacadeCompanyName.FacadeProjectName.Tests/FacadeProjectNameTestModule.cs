@@ -52,6 +52,12 @@ namespace FacadeCompanyName.FacadeProjectName.Tests
             Configuration.Localization.Languages.Add(new LanguageInfo("en", "English"));
 
             Configuration.ReplaceService<IEmailSender, NullEmailSender>(DependencyLifeStyle.Transient);
+
+            // set licence
+            Facade.Configuration.FacadeCoreConfigurationExtensions.Facade(Configuration.Modules).Configure(options =>
+            {
+                options.Licence = "";
+            });
         }
 
         public override void Initialize()
