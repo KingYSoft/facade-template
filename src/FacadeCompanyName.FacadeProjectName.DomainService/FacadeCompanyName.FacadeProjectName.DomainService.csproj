@@ -35,4 +35,8 @@
     <ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.Oracle\FacadeCompanyName.FacadeProjectName.Oracle.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.SqlServer\FacadeCompanyName.FacadeProjectName.SqlServer.csproj" />
+	</ItemGroup>
+	
 </Project>

@@ -37,7 +37,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
             // set licence
             Facade.Configuration.FacadeCoreConfigurationExtensions.Facade(Configuration.Modules).Configure(options =>
             {
-                options.Licence = "";
+                //fc_VG4DYu9N6DKIZFSno9KrvdwtJAVYCzUQzWp52X/DngqlJsINeDkUacVslAjVYSXY
+                options.Licence = "fc_VG4DYu9N6DKIZFSno9KrvdwtJAVYCzUQzWp52X/DngqlJsINeDkUacVslAjVYSXY";
             });
         }
 

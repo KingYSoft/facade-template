@@ -12,5 +12,7 @@
         /// is local development
         /// </summary>
         bool IsDevelopment { get; }
+
+        string SqlServerConnString { get; }
     }
 }

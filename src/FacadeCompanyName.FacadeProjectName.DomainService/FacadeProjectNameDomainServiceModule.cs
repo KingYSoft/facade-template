@@ -7,11 +7,13 @@ using Facade.Quartz;
 using FacadeCompanyName.FacadeProjectName.DomainService.BackgroundWorkers;
 using FacadeCompanyName.FacadeProjectName.DomainService.Localization;
 using FacadeCompanyName.FacadeProjectName.Oracle;
+using FacadeCompanyName.FacadeProjectName.SqlServer;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService
 {
     [DependsOn(
         typeof(FacadeProjectNameOracleModule),
+        typeof(FacadeProjectNameSqlServerModule),
         typeof(FacadeQuartzModule),
         typeof(FacadeAutoMapperModule)
            )]

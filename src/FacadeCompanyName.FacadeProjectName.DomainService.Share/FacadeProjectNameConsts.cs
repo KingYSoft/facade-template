@@ -5,6 +5,7 @@
         public const string LocalizationSourceName = "FacadeProjectName";
 
         public const string ConnectionStringName = "Default";
+        public const string SqlServerConnectionStringName = "SqlServer";
 
         public const bool MultiTenancyEnabled = false;
 

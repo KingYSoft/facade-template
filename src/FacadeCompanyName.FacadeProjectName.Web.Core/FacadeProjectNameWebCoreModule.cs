@@ -44,6 +44,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
             facadeConfiguration.AppRootPath = _env.ContentRootPath;
             facadeConfiguration.IsDevelopment = _env.EnvironmentName.Equals("Development", StringComparison.OrdinalIgnoreCase);
             facadeConfiguration.AppEnvName = _env.EnvironmentName;
+            facadeConfiguration.SqlServerConnString = _appConfiguration.GetConnectionString(FacadeProjectNameConsts.SqlServerConnectionStringName);
 
             Configuration.Auditing.IsEnabled = false;
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;

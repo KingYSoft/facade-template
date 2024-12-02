@@ -6,5 +6,6 @@
         public string AppRootPath { get; set; }
         public string AppEnvName { get; set; }
         public bool IsDevelopment { get; set; }
+        public string SqlServerConnString { get; set; }
     }
 }
