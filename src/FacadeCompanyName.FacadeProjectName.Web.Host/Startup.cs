@@ -12,6 +12,7 @@ using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 using FacadeCompanyName.FacadeProjectName.Oracle;
+using FacadeCompanyName.FacadeProjectName.SqlServer;
 using FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore;
 using FacadeCompanyName.FacadeProjectName.Web.Core.Swagger;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Hubs;
@@ -86,6 +87,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                         typeof(FacadeProjectNameDomainServiceModule),
                         typeof(FacadeProjectNameDomainServiceShareModule),
                         typeof(FacadeProjectNameOracleModule),
+                        typeof(FacadeProjectNameSqlServerModule),
                     };
                     foreach (var t in types)
                     {
