@@ -3,9 +3,9 @@ using Castle.MicroKernel;
 using System;
 using System.Linq;
 
-namespace FacadeCompanyName.FacadeProjectName.Oracle.Interceptors
+namespace FacadeCompanyName.FacadeProjectName.DomainService.Share.Interceptors
 {
-    public class InterceptorRegistrar
+    public class DapperInterceptorRegistrar
     {
         public static void Initialize(IKernel kernel)
         {
@@ -16,7 +16,7 @@ namespace FacadeCompanyName.FacadeProjectName.Oracle.Interceptors
         {
             if (JobShouldIntercept(handler.ComponentModel.Implementation))
             {
-                handler.ComponentModel.Interceptors.Add(new InterceptorReference(typeof(RepositoryInterceptor)));
+                handler.ComponentModel.Interceptors.Add(new InterceptorReference(typeof(DapperRepositoryInterceptor)));
             }
 
 
@@ -24,12 +24,7 @@ namespace FacadeCompanyName.FacadeProjectName.Oracle.Interceptors
         private static bool JobShouldIntercept(Type type)
         {
 
-            //if (type.GetTypeInfo().IsDefined(typeof(JobInterceptorAttribute), true))
-            //{
-            //    return true;
-            //}
-
-            if (type.GetMethods().Any(m => m.IsDefined(typeof(RepositoryInterceptorAttribute), true)))
+            if (type.GetMethods().Any(m => m.IsDefined(typeof(DapperRepositoryInterceptorAttribute), true)))
             {
                 return true;
             }

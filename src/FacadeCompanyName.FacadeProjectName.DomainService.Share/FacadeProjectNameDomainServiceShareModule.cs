@@ -2,6 +2,7 @@
 using Abp.Reflection.Extensions;
 using Facade.Dapper.Oracle;
 using Facade.NLogger;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share.Interceptors;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
 {
@@ -17,6 +18,8 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
         }
         public override void PreInitialize()
         {
+            //注册拦截器
+            DapperInterceptorRegistrar.Initialize(IocManager.IocContainer.Kernel);
         }
 
         public override void Initialize()

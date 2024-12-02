@@ -8,13 +8,13 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace FacadeCompanyName.FacadeProjectName.Oracle.Interceptors
+namespace FacadeCompanyName.FacadeProjectName.DomainService.Share.Interceptors
 {
-    public class RepositoryInterceptor : IInterceptor
+    public class DapperRepositoryInterceptor : IInterceptor
     {
         private readonly ILogger _logger;
 
-        public RepositoryInterceptor()
+        public DapperRepositoryInterceptor()
         {
             _logger = IocManager.Instance.Resolve<ILogger>();
         }
@@ -116,19 +116,10 @@ namespace FacadeCompanyName.FacadeProjectName.Oracle.Interceptors
                 return false;
             }
 
-            if (methodInfo.IsDefined(typeof(RepositoryInterceptorAttribute), true))
+            if (methodInfo.IsDefined(typeof(DapperRepositoryInterceptorAttribute), true))
             {
                 return true;
             }
-
-            //var classType = methodInfo.DeclaringType;
-            //if (classType != null)
-            //{
-            //    if (classType.GetTypeInfo().IsDefined(typeof(JobInterceptorAttribute), true))
-            //    {
-            //        return true;
-            //    }
-            //}
 
             return false;
         }

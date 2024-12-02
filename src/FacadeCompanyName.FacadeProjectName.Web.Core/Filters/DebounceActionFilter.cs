@@ -7,7 +7,6 @@ using Abp.Threading.Extensions;
 using Castle.Core.Logging;
 using Facade.AspNetCore.Mvc.Authorization;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
-using FacadeCompanyName.FacadeProjectName.DomainService.Share.App;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
@@ -23,13 +22,11 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Filters
     {
         private readonly ILogger _logger;
         private readonly IFacadeConfiguration _facadeConfiguration;
-        private readonly IAppRepository _appRepository;
         private readonly ICacheManager _cacheManager;
-        public DebounceActionFilter(ILogger logger, IFacadeConfiguration facadeConfiguration, IAppRepository appRepository, ICacheManager cacheManager)
+        public DebounceActionFilter(ILogger logger, IFacadeConfiguration facadeConfiguration, ICacheManager cacheManager)
         {
             _logger = logger;
             _facadeConfiguration = facadeConfiguration;
-            _appRepository = appRepository;
             _cacheManager = cacheManager;
         }
         private ITypedCache<string, string> DebounceCache =>

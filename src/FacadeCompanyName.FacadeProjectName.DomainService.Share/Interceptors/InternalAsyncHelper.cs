@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace FacadeCompanyName.FacadeProjectName.Oracle.Interceptors
+namespace FacadeCompanyName.FacadeProjectName.DomainService.Share.Interceptors
 {
     internal static class InternalAsyncHelper
     {
