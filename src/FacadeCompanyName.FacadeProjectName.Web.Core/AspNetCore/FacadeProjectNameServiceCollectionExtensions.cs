@@ -88,7 +88,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
             app.UseAbpRequestLocalization();
 
             // demo middleware
-            app.UseMiddleware<DemoMiddleware>();
+            // app.UseMiddleware<DemoMiddleware>();
         }
     }
 }
