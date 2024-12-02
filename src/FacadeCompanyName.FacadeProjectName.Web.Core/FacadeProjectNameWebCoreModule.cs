@@ -1,5 +1,4 @@
 ﻿using Abp.Dependency;
-using Abp.IO;
 using Abp.Localization;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
@@ -8,14 +7,12 @@ using Facade.AspNetCore.Configuration;
 using Facade.AspNetCore.Zero;
 using Facade.Core.Configuration;
 using FacadeCompanyName.FacadeProjectName.Application;
-using FacadeCompanyName.FacadeProjectName.DomainService.Folders;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 using FacadeCompanyName.FacadeProjectName.Web.Core.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.IO;
 using System.Text;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Core
@@ -69,14 +66,11 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
 
         public override void PostInitialize()
         {
-            SetAppFolders();
         }
 
         public override void Shutdown()
         {
         }
-
-
 
         private void ConfigureTokenAuth()
         {
@@ -91,22 +85,5 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
 
         }
 
-        private void SetAppFolders()
-        {
-            var appFolders = IocManager.Resolve<AppFolders>();
-
-
-            appFolders.FileUploadFolder = Path.Combine(_env.WebRootPath, "files", "uploads");
-            appFolders.TempFileUploadFolder = Path.Combine(_env.WebRootPath, "temps", "uploads");
-            appFolders.TempFileDownloadFolder = Path.Combine(_env.WebRootPath, "temps", "downloads");
-
-            try
-            {
-                DirectoryHelper.CreateIfNotExists(appFolders.FileUploadFolder);
-                DirectoryHelper.CreateIfNotExists(appFolders.TempFileUploadFolder);
-                DirectoryHelper.CreateIfNotExists(appFolders.TempFileDownloadFolder);
-            }
-            catch { }
-        }
     }
 }

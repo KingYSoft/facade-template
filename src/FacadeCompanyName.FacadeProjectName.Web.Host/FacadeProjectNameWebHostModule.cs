@@ -4,10 +4,12 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Facade.AspNetCore.Configuration;
 using Facade.Core.Configuration;
+using FacadeCompanyName.FacadeProjectName.DomainService.Folders;
 using FacadeCompanyName.FacadeProjectName.Web.Core;
 using FacadeCompanyName.FacadeProjectName.Web.Host.Hubs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace FacadeCompanyName.FacadeProjectName.Web.Host
 {
@@ -50,9 +52,29 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
             Configuration.Notifications.Notifiers.Add<NewSignalRRealTimeNotifier>();
         }
         public override void PostInitialize()
-        { 
+        {
             // StartQuartz();
-        } 
+
+            SetAppFolders();
+        }
+
+        private void SetAppFolders()
+        {
+            var appFolders = IocManager.Resolve<AppFolders>();
+
+
+            appFolders.FileUploadFolder = Path.Combine(_env.WebRootPath, "files", "uploads");
+            appFolders.TempFileUploadFolder = Path.Combine(_env.WebRootPath, "temps", "uploads");
+            appFolders.TempFileDownloadFolder = Path.Combine(_env.WebRootPath, "temps", "downloads");
+
+            try
+            {
+                DirectoryHelper.CreateIfNotExists(appFolders.FileUploadFolder);
+                DirectoryHelper.CreateIfNotExists(appFolders.TempFileUploadFolder);
+                DirectoryHelper.CreateIfNotExists(appFolders.TempFileDownloadFolder);
+            }
+            catch { }
+        }
     }
 }
 
