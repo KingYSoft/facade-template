@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.Dapper.Oracle" Version="5.4.2" />
-    <PackageReference Include="Facade.NLogger" Version="5.4.2" />
+    <PackageReference Include="Facade.Dapper.Oracle" Version="5.4.5" />
+    <PackageReference Include="Facade.NLogger" Version="5.4.5" />
   </ItemGroup>
  
 
