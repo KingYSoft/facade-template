@@ -2,7 +2,7 @@
 using Abp.EntityFrameworkCore;
 using Abp.EntityFrameworkCore.Repositories;
 
-namespace FacadeCompanyName.FacadeProjectName.Oracle.EntityFrameworkCore.Repositories
+namespace FacadeCompanyName.FacadeProjectName.MySql.EntityFrameworkCore.Repositories
 {
     /// <summary>
     /// EF Core Repository base
@@ -10,10 +10,10 @@ namespace FacadeCompanyName.FacadeProjectName.Oracle.EntityFrameworkCore.Reposit
     /// </summary>
     /// <typeparam name="TEntity">Entity type</typeparam>
     /// <typeparam name="TPrimaryKey">Primary key type of the entity</typeparam>
-    public class FacadeProjectNameEfCoreRepositoryBase<TEntity, TPrimaryKey> : EfCoreRepositoryBase<FacadeProjectNameOracleDbContext, TEntity, TPrimaryKey>
+    public class FacadeProjectNameMySqlEfCoreRepositoryBase<TEntity, TPrimaryKey> : EfCoreRepositoryBase<FacadeProjectNameMySqlDbContext, TEntity, TPrimaryKey>
         where TEntity : class, IEntity<TPrimaryKey>
     {
-        protected FacadeProjectNameEfCoreRepositoryBase(IDbContextProvider<FacadeProjectNameOracleDbContext> dbContextProvider)
+        protected FacadeProjectNameMySqlEfCoreRepositoryBase(IDbContextProvider<FacadeProjectNameMySqlDbContext> dbContextProvider)
             : base(dbContextProvider)
         {
         }

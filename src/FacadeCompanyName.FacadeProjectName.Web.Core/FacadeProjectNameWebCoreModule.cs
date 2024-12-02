@@ -45,6 +45,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
             facadeConfiguration.IsDevelopment = _env.EnvironmentName.Equals("Development", StringComparison.OrdinalIgnoreCase);
             facadeConfiguration.AppEnvName = _env.EnvironmentName;
             facadeConfiguration.SqlServerConnString = _appConfiguration.GetConnectionString(FacadeProjectNameConsts.SqlServerConnectionStringName);
+            facadeConfiguration.MySqlConnString = _appConfiguration.GetConnectionString(FacadeProjectNameConsts.MySqlConnectionStringName);
 
             Configuration.Auditing.IsEnabled = false;
             Configuration.Auditing.IsEnabledForAnonymousUsers = true;

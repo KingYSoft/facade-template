@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacadeCompanyName.FacadePro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacadeCompanyName.FacadeProjectName.SqlServer", "src\FacadeCompanyName.FacadeProjectName.SqlServer\FacadeCompanyName.FacadeProjectName.SqlServer.csproj", "{53B92042-3C96-42BF-B9C4-68A7C0277854}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacadeCompanyName.FacadeProjectName.MySql", "src\FacadeCompanyName.FacadeProjectName.MySql\FacadeCompanyName.FacadeProjectName.MySql.csproj", "{A2B5EBE1-8605-4CC2-903B-B7C911B78988}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{53B92042-3C96-42BF-B9C4-68A7C0277854}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53B92042-3C96-42BF-B9C4-68A7C0277854}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53B92042-3C96-42BF-B9C4-68A7C0277854}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2B5EBE1-8605-4CC2-903B-B7C911B78988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B5EBE1-8605-4CC2-903B-B7C911B78988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B5EBE1-8605-4CC2-903B-B7C911B78988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B5EBE1-8605-4CC2-903B-B7C911B78988}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{E884907E-C4BC-4BEF-BB4B-4DFA188FD2D1} = {1B2913A2-7AF0-4FEC-83BB-438004915FE9}
 		{671FDBF2-3E42-4B5E-B2A2-980326ECE305} = {1B2913A2-7AF0-4FEC-83BB-438004915FE9}
 		{53B92042-3C96-42BF-B9C4-68A7C0277854} = {1B2913A2-7AF0-4FEC-83BB-438004915FE9}
+		{A2B5EBE1-8605-4CC2-903B-B7C911B78988} = {1B2913A2-7AF0-4FEC-83BB-438004915FE9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05677E74-C8A3-4081-9955-B1020BEA941C}

@@ -6,6 +6,7 @@
 
         public const string ConnectionStringName = "Default";
         public const string SqlServerConnectionStringName = "SqlServer";
+        public const string MySqlConnectionStringName = "MySql";
 
         public const bool MultiTenancyEnabled = false;
 

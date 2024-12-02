@@ -1,11 +1,8 @@
 ﻿using Abp.Configuration.Startup;
 using Abp.Domain.Uow;
+using FacadeCompanyName.FacadeProjectName.MySql.EntityFrameworkCore;
 using FacadeCompanyName.FacadeProjectName.SqlServer.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
 {
@@ -24,6 +21,10 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
             if (args["DbContextConcreteType"] as Type == typeof(FacadeProjectNameSqlServerDbContext))
             {
                 return _facadeConfiguration.SqlServerConnString;
+            }
+            else if (args["DbContextConcreteType"] as Type == typeof(FacadeProjectNameMySqlDbContext))
+            {
+                return _facadeConfiguration.MySqlConnString;
             }
 
             return base.GetNameOrConnectionString(args);

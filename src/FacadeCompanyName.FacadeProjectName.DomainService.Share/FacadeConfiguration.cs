@@ -7,5 +7,6 @@
         public string AppEnvName { get; set; }
         public bool IsDevelopment { get; set; }
         public string SqlServerConnString { get; set; }
+        public string MySqlConnString { get; set; }
     }
 }

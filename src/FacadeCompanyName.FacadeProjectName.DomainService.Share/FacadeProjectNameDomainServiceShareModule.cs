@@ -1,5 +1,6 @@
 ﻿using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Facade.Dapper.MySql;
 using Facade.Dapper.Oracle;
 using Facade.Dapper.SqlServer;
 using Facade.NLogger;
@@ -10,7 +11,8 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
     [DependsOn(
            typeof(FacadeNLoggerModule),
            typeof(FacadeDapperOralceModule),
-           typeof(FacadeDapperSqlServerModule)
+           typeof(FacadeDapperSqlServerModule),
+           typeof(FacadeDapperMySqlModule)
            )]
     public class FacadeProjectNameDomainServiceShareModule : AbpModule
     {

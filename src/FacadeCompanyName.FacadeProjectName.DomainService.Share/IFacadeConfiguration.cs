@@ -14,5 +14,6 @@
         bool IsDevelopment { get; }
 
         string SqlServerConnString { get; }
+        string MySqlConnString { get; }
     }
 }

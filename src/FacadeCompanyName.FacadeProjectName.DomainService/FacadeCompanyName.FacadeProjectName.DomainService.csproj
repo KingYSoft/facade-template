@@ -38,5 +38,9 @@
 	<ItemGroup>
 		<ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.SqlServer\FacadeCompanyName.FacadeProjectName.SqlServer.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.MySql\FacadeCompanyName.FacadeProjectName.MySql.csproj" />
+	</ItemGroup>
 	
 </Project>
