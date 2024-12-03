@@ -46,11 +46,7 @@ namespace FacadeCompanyName.FacadeProjectName.Tests
             Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
             Configuration.MultiTenancy.IsEnabled = FacadeProjectNameConsts.MultiTenancyEnabled;
             Configuration.DefaultNameOrConnectionString = "Data Source=ORCL;Persist Security Info=True;User Id=ORCL;Password=ORCL;";
-
-            Configuration.Localization.Languages.Clear();
-            Configuration.Localization.Languages.Add(new LanguageInfo("zh", "ÖÐÎÄ¼òÌå", isDefault: true));
-            Configuration.Localization.Languages.Add(new LanguageInfo("en", "English"));
-
+            
             Configuration.ReplaceService<IEmailSender, NullEmailSender>(DependencyLifeStyle.Transient);
 
             // set licence
