@@ -27,6 +27,7 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
                 return _facadeConfiguration.MySqlConnString;
             }
 
+            // default oracle
             return base.GetNameOrConnectionString(args);
         }
     }

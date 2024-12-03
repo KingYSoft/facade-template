@@ -11,6 +11,7 @@ using Facade.NLogger;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
+using FacadeCompanyName.FacadeProjectName.MySql;
 using FacadeCompanyName.FacadeProjectName.Oracle;
 using FacadeCompanyName.FacadeProjectName.SqlServer;
 using FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore;
@@ -88,6 +89,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
                         typeof(FacadeProjectNameDomainServiceShareModule),
                         typeof(FacadeProjectNameOracleModule),
                         typeof(FacadeProjectNameSqlServerModule),
+                        typeof(FacadeProjectNameMySqlModule),
                     };
                     foreach (var t in types)
                     {

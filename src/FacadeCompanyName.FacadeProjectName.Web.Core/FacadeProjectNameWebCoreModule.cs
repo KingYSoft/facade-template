@@ -55,7 +55,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
             Configuration.UnitOfWork.Timeout = new TimeSpan(0, 0, 30);
 
             Configuration.Localization.Languages.Clear();
-            Configuration.Localization.Languages.Add(new LanguageInfo("zh", "中文简体", isDefault: true));
+            Configuration.Localization.Languages.Add(new LanguageInfo("zh-Hans", "中文简体", isDefault: true));
             Configuration.Localization.Languages.Add(new LanguageInfo("en", "English"));
             ConfigureTokenAuth();
 

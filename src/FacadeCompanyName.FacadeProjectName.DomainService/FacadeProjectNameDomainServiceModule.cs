@@ -1,4 +1,6 @@
 ﻿using Abp.AutoMapper;
+using Abp.Configuration.Startup;
+using Abp.Domain.Uow;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Threading.BackgroundWorkers;
@@ -6,6 +8,7 @@ using Facade.AutoMapper;
 using Facade.Quartz;
 using FacadeCompanyName.FacadeProjectName.DomainService.BackgroundWorkers;
 using FacadeCompanyName.FacadeProjectName.DomainService.Localization;
+using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 using FacadeCompanyName.FacadeProjectName.MySql;
 using FacadeCompanyName.FacadeProjectName.Oracle;
 using FacadeCompanyName.FacadeProjectName.SqlServer;
@@ -27,6 +30,8 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService
         }
         public override void PreInitialize()
         {
+            Configuration.ReplaceService<IConnectionStringResolver, MyConnectionStringResolver>();
+
             FacadeProjectNameLocalizationConfigurer.Configure(Configuration.Localization);
         }
 

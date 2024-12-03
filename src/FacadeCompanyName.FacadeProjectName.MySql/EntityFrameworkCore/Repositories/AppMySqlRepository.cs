@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.MySql.EntityFrameworkCore.Repositories
 {
-    public class AppMySqlRepository : MySqlQueryRepository, IAppMySqlRepository
+    public class AppMySqlRepository : MySqlQueryRepository<FacadeProjectNameMySqlDbContext>, IAppMySqlRepository
     {
         public AppMySqlRepository(IFacadeConnectionProvider facadeConnectionProvider)
            : base(facadeConnectionProvider)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FacadeCompanyName.FacadeProjectName.SqlServer.EntityFrameworkCore.Repositories
 {
-    public class AppSqlServerRepository : SqlServerQueryRepository, IAppSqlServerRepository
+    public class AppSqlServerRepository : SqlServerQueryRepository<FacadeProjectNameSqlServerDbContext>, IAppSqlServerRepository
     {
         public AppSqlServerRepository(IFacadeConnectionProvider facadeConnectionProvider)
             : base(facadeConnectionProvider)
