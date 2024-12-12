@@ -14,10 +14,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Facade.AspNetCore" Version="5.5.0" />
-    <PackageReference Include="Facade.AspNetCore.Zero" Version="5.5.0" />
+    <PackageReference Include="Facade.AspNetCore" Version="5.6.0" />
+    <PackageReference Include="Facade.AspNetCore.Zero" Version="5.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
 
     <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
   </ItemGroup>
