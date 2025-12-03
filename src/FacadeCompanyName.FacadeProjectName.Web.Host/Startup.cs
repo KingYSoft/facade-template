@@ -130,7 +130,10 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
             if (_env.IsDevelopment())
             {
                 // Enable middleware to serve generated Swagger as a JSON endpoint
-                app.UseSwagger();
+                app.UseSwagger(v => 
+                {
+                    v.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0;
+                });
                 // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
                 app.UseSwaggerUI(options =>
                 {

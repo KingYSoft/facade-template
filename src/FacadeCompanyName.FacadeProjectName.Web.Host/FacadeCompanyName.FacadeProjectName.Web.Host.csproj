@@ -27,6 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.22" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FacadeCompanyName.FacadeProjectName.Web.Core\FacadeCompanyName.FacadeProjectName.Web.Core.csproj" />
   </ItemGroup>
  
