@@ -1,13 +1,19 @@
-﻿using Abp.AutoMapper;
+﻿using Abp.Authorization;
+using Abp.AutoMapper;
 using Abp.Configuration.Startup;
+using Abp.Dependency;
 using Abp.Domain.Uow;
+using Abp.MailKit;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Abp.Threading.BackgroundWorkers;
 using Facade.AutoMapper;
 using Facade.Quartz;
 using FacadeCompanyName.FacadeProjectName.DomainService.BackgroundWorkers;
+using FacadeCompanyName.FacadeProjectName.DomainService.Features;
 using FacadeCompanyName.FacadeProjectName.DomainService.Localization;
+using FacadeCompanyName.FacadeProjectName.DomainService.Navigation;
+using FacadeCompanyName.FacadeProjectName.DomainService.SettingDefinitions;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 using FacadeCompanyName.FacadeProjectName.MySql;
 using FacadeCompanyName.FacadeProjectName.Oracle;
@@ -33,6 +39,15 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService
             Configuration.ReplaceService<IConnectionStringResolver, MyConnectionStringResolver>();
 
             FacadeProjectNameLocalizationConfigurer.Configure(Configuration.Localization);
+
+            //Configuration.Authorization.Providers.Add<MyAuthorizationProvider>();
+            Configuration.Navigation.Providers.Add<MyNavigationProvider>();
+            Configuration.Features.Providers.Add<MyFeatureProvider>();
+
+            Configuration.Settings.Providers.Add<MyEmailSettingProvider>();
+            Configuration.Settings.Providers.Add<MyLocalizationSettingProvider>();
+
+            Configuration.ReplaceService<IMailKitSmtpBuilder, MyMailKitSmtpBuilder>(DependencyLifeStyle.Transient);
         }
 
         public override void Initialize()
