@@ -1,6 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using Facade.Dapper;
-using Facade.Dapper.Oracle;
+using Facade.Dapper.SqlServer;
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace FacadeCompanyName.FacadeProjectName.SqlServer.EntityFrameworkCore.Repositories
 {
-    public class FacadeProjectNameSqlServerDapperRepositoryBase<TEntity, TPrimaryKey> : OracleDapperRepository<TEntity, TPrimaryKey>
+    public class FacadeProjectNameSqlServerDapperRepositoryBase<TEntity, TPrimaryKey> : SqlServerDapperRepository<TEntity, TPrimaryKey>
          where TEntity : class, IEntity<TPrimaryKey>
     {
         protected FacadeProjectNameSqlServerDapperRepositoryBase(IFacadeConnectionProvider facadeConnection)

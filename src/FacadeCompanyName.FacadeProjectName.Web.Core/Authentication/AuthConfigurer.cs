@@ -58,6 +58,21 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Authentication
          * SignalR can not send authorization header. So, we are getting it from query string as an encrypted text. */
         private static Task QueryStringTokenResolver(MessageReceivedContext context)
         {
+            var jwtRes = context.Request.Headers.Authorization.FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(jwtRes) && jwtRes.StartsWith("Bearer "))
+            {
+                try
+                {
+                    jwtRes = jwtRes.Substring(7);
+                    if (!string.IsNullOrWhiteSpace(jwtRes))
+                    {
+                        var jwt = SimpleStringCipher.Instance.Decrypt(jwtRes, AppConsts.DefaultPassPhrase);
+                        context.Request.Headers.Authorization = "Bearer " + jwt;
+                    }
+                }
+                catch { }
+            }
+
             if (!context.HttpContext.Request.Path.HasValue ||
                 !context.HttpContext.Request.Path.Value.StartsWith("/signalr"))
             {

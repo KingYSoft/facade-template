@@ -1,4 +1,5 @@
 ﻿using Abp.AspNetCore;
+using Abp.AspNetCore.Localization;
 using Abp.Extensions;
 using Facade.AspNetCore;
 using FacadeCompanyName.FacadeProjectName.Web.Core.Authentication;
@@ -85,7 +86,26 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseAbpRequestLocalization();
+            app.UseAbpRequestLocalization(options =>
+            {
+                var logger = app.ApplicationServices.GetRequiredService<Castle.Core.Logging.ILogger>();
+                var headerProvider = options.RequestCultureProviders.OfType<AbpLocalizationHeaderRequestCultureProvider>().FirstOrDefault();
+                if (headerProvider != null)
+                {
+                    headerProvider.HeaderName = "Facade-Language";
+                    headerProvider.Logger = logger;
+                }
+                var defaultProvider = options.RequestCultureProviders.OfType<AbpDefaultRequestCultureProvider>().FirstOrDefault();
+                if (defaultProvider != null)
+                {
+                    defaultProvider.Logger = logger;
+                }
+                var userProvider = options.RequestCultureProviders.OfType<AbpUserRequestCultureProvider>().FirstOrDefault();
+                if (userProvider != null)
+                {
+                    userProvider.Logger = logger;
+                }
+            });
 
             // demo middleware
             // app.UseMiddleware<DemoMiddleware>();
