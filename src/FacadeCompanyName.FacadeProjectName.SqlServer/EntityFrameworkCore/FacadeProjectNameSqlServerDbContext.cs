@@ -5,7 +5,7 @@ namespace FacadeCompanyName.FacadeProjectName.SqlServer.EntityFrameworkCore
 {
     public class FacadeProjectNameSqlServerDbContext : SqlServerDbContext
     {
-        // 配置 DbSet 自动注册 ef core IRepotory 
+        // 配置 DbSet 自动注册 ef core IRepository 
 
 
         public FacadeProjectNameSqlServerDbContext(DbContextOptions<FacadeProjectNameSqlServerDbContext> options)
