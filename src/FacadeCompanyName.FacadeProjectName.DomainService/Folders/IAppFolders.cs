@@ -3,7 +3,7 @@
     public interface IAppFolders
     {
         /// <summary>
-        /// 临时文件下载文件夹 /temps//downloads/
+        /// 临时文件下载文件夹 /temps/downloads/
         /// </summary>
         string TempFileDownloadFolder { get; }
         /// <summary>

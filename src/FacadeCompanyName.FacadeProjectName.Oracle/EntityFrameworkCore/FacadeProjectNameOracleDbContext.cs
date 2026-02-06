@@ -5,7 +5,7 @@ namespace FacadeCompanyName.FacadeProjectName.Oracle.EntityFrameworkCore
 {
     public class FacadeProjectNameOracleDbContext : OracleDbContext
     {
-        // 配置 DbSet 自动注册 ef core IRepotory 
+        // 配置 DbSet 自动注册 ef core IRepository 
 
 
         public FacadeProjectNameOracleDbContext(DbContextOptions<FacadeProjectNameOracleDbContext> options)
