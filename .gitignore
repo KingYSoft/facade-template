@@ -251,5 +251,7 @@ paket-files/
 .idea/
 *.sln.iml
 
-#FacadeProjectName
-src/FacadeCompanyName.FacadeProjectName.Web.Host/App_Data/Logs/*
+.vscode/
+
+**/App_Data/**
+**/*.csproj.lscache

@@ -4,7 +4,6 @@ using Abp.Modules;
 using Abp.Reflection.Extensions;
 using Facade.AspNetCore;
 using Facade.AspNetCore.Configuration;
-using Facade.AspNetCore.Zero;
 using Facade.Core.Configuration;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
@@ -19,8 +18,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core
 {
     [DependsOn(
                 typeof(FacadeProjectNameApplicationModule),
-                typeof(FacadeAspNetCoreModule),
-                typeof(FacadeAspNetCoreZeroModule)
+                typeof(FacadeAspNetCoreModule)
                 )]
     public class FacadeProjectNameWebCoreModule : AbpModule
     {

@@ -2,9 +2,9 @@
 using Abp.AspNetCore.Localization;
 using Abp.Extensions;
 using Facade.AspNetCore;
+using FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore.Builders;
 using FacadeCompanyName.FacadeProjectName.Web.Core.Authentication;
 using FacadeCompanyName.FacadeProjectName.Web.Core.Filters;
-using FacadeCompanyName.FacadeProjectName.Web.Core.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +25,18 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
         /// <param name="appConfiguration"></param>
         public static void ConfigureFacadeProjectNameService(this IServiceCollection services, IConfigurationRoot appConfiguration)
         {
-            services.AddControllers();
+
+            services.AddControllers(options =>
+            {
+                //query?xx=xx
+                options.ModelBinderProviders.Insert(0, new TrimStringModelBinderProvider());
+                //obj
+                options.Filters.Add<TrimStringActionFilter>();
+            })
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new NumberToStringJsonConverter());
+            });
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -78,6 +89,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.AspNetCore
                 OnPrepareResponse = (c) =>
                 {
                     // 资源文件跨域
+                    c.Context.Response.Headers.Remove("X-Frame-Options");
+                    c.Context.Response.Headers.Remove("Access-Control-Allow-Origin");
                     c.Context.Response.Headers.AccessControlAllowOrigin = "*";
                 }
             });

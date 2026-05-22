@@ -1,9 +1,9 @@
-﻿using Facade.Dapper.Oracle;
+﻿using Abp.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FacadeCompanyName.FacadeProjectName.Oracle.EntityFrameworkCore
 {
-    public class FacadeProjectNameOracleDbContext : OracleDbContext
+    public class FacadeProjectNameOracleDbContext : AbpDbContext
     {
         // 配置 DbSet 自动注册 ef core IRepository 
 

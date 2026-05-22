@@ -22,6 +22,8 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host
             string url = config[urls] ?? "http://*:21021";
 
             return WebHost.CreateDefaultBuilder(args)
+                  .UseContentRoot(AppDomain.CurrentDomain.BaseDirectory)
+                  .UseWebRoot(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot"))
                   .UseUrls(url)
                   .UseStartup<Startup>()
                   .UseKestrel(options =>
