@@ -1,4 +1,5 @@
-﻿using Abp.Domain.Entities;
+﻿using System.Threading.Tasks;
+using Abp.Domain.Entities;
 using Abp.EntityFrameworkCore;
 using Abp.EntityFrameworkCore.Repositories;
 
@@ -19,5 +20,23 @@ namespace FacadeCompanyName.FacadeProjectName.MySql.EntityFrameworkCore.Reposito
         }
 
         // Add your common methods for all repositories
+
+
+        public override TEntity Insert(TEntity entity)
+        {
+            return base.Insert(entity);
+        }
+        public override Task<TEntity> InsertAsync(TEntity entity)
+        {
+            return base.InsertAsync(entity);
+        }
+        public override TEntity Update(TEntity entity)
+        {
+            return base.Update(entity);
+        }
+        public override Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            return base.UpdateAsync(entity);
+        }
     }
 }

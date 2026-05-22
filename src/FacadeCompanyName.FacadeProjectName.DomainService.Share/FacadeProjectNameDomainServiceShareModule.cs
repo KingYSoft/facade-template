@@ -1,10 +1,11 @@
-﻿using Abp.Modules;
+﻿using System.Data;
+using Abp.Modules;
 using Abp.Reflection.Extensions;
+using Dapper;
 using Facade.Dapper.MySql;
 using Facade.Dapper.Oracle;
 using Facade.Dapper.SqlServer;
 using Facade.NLogger;
-using FacadeCompanyName.FacadeProjectName.DomainService.Share.Interceptors;
 
 namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
 {
@@ -22,14 +23,26 @@ namespace FacadeCompanyName.FacadeProjectName.DomainService.Share
         }
         public override void PreInitialize()
         {
-            //注册拦截器
-            DapperInterceptorRegistrar.Initialize(IocManager.IocContainer.Kernel);
+            SqlMapper.AddTypeHandler(new GuidToStringHandler());
         }
 
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(typeof(FacadeProjectNameDomainServiceShareModule).GetAssembly());
+            Configuration.Auditing.Selectors.RemoveByName("Abp.ApplicationServices");
         }
 
+    }
+    public class GuidToStringHandler : SqlMapper.TypeHandler<string>
+    {
+        public override void SetValue(IDbDataParameter parameter, string value)
+        {
+            parameter.Value = System.Guid.Parse(value);
+        }
+
+        public override string Parse(object value)
+        {
+            return value.ToString();
+        }
     }
 }

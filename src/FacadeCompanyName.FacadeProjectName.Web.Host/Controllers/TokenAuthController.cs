@@ -1,6 +1,5 @@
 ﻿using Abp.Runtime.Security;
 using Facade.AspNetCore.Mvc.Authorization;
-using Facade.AspNetCore.Zero;
 using Facade.Core.Web;
 using FacadeCompanyName.FacadeProjectName.Application;
 using FacadeCompanyName.FacadeProjectName.Web.Core.Authentication.JwtBearer;
@@ -20,11 +19,9 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
     [ApiExplorerSettings(IgnoreApi = true)]
     public class TokenAuthController : FacadeProjectNameControllerBase
     {
-        private readonly IFacadeLoginManager _facadeLoginManager;
         private readonly TokenAuthConfiguration _configuration;
-        public TokenAuthController(IFacadeLoginManager facadeLoginManager, TokenAuthConfiguration configuration)
+        public TokenAuthController(TokenAuthConfiguration configuration)
         {
-            _facadeLoginManager = facadeLoginManager;
             _configuration = configuration;
         }
         [HttpPost]
@@ -34,17 +31,15 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
         {
             if (input.UserNameOrEmailAddress == "admin" && input.Password == "admin")
             {
-                var identity = await _facadeLoginManager.CreateClaimsIdentity("10000", "admin", "1");
+                var identity = CreateClaimsIdentity("10000", "admin", "1");
 
-                var accessToken = CreateAccessToken(CreateJwtClaims(identity));
+                var accessToken = GetEncrpyedAccessToken(CreateAccessToken(CreateJwtClaims(identity)));
 
                 return new JsonResponse<AuthenticateOutput>
                 {
                     Data = new AuthenticateOutput
                     {
-                        AccessToken = accessToken,
-                        EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
-                        ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds
+                        access_token = accessToken
                     }
                 };
             }
@@ -52,6 +47,20 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Host.Controllers
             {
                 return new JsonResponse<AuthenticateOutput>(false, "登入失败");
             }
+        }
+        private ClaimsIdentity CreateClaimsIdentity(string userId, string userName, string tenantId)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(AbpClaimTypes.UserId, userId),
+                new Claim(AbpClaimTypes.UserName, string.IsNullOrWhiteSpace(userName) ? string.Empty : userName),
+                new Claim(AbpClaimTypes.TenantId, tenantId),
+            };
+            var claimsIdentity = new ClaimsIdentity(claims);
+            var principal = new ClaimsPrincipal(claimsIdentity);
+
+            var identity = principal.Identity as ClaimsIdentity;
+            return identity;
         }
         private string CreateAccessToken(IEnumerable<Claim> claims, TimeSpan? expiration = null)
         {

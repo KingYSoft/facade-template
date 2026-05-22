@@ -1,9 +1,9 @@
-﻿using Facade.Dapper.SqlServer;
+﻿using Abp.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FacadeCompanyName.FacadeProjectName.SqlServer.EntityFrameworkCore
 {
-    public class FacadeProjectNameSqlServerDbContext : SqlServerDbContext
+    public class FacadeProjectNameSqlServerDbContext : AbpDbContext
     {
         // 配置 DbSet 自动注册 ef core IRepository 
 

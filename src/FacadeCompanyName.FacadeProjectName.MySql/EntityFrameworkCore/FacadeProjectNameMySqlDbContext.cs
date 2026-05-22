@@ -1,9 +1,10 @@
-﻿using Facade.Dapper.MySql;
+﻿using Abp.EntityFrameworkCore;
+using Facade.Dapper.MySql;
 using Microsoft.EntityFrameworkCore;
 
 namespace FacadeCompanyName.FacadeProjectName.MySql.EntityFrameworkCore
 {
-    public class FacadeProjectNameMySqlDbContext : MySqlDbContext
+    public class FacadeProjectNameMySqlDbContext : AbpDbContext
     {
         // 配置 DbSet 自动注册 ef core IRepository 
 
