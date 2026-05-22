@@ -1,0 +1,57 @@
+# Git and IDE metadata
+.git
+.gitignore
+.gitattributes
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+artifacts/
+[Ll]og/
+
+# Test and coverage outputs
+[Tt]est[Rr]esult*/
+*.trx
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# Logs, temp files, and local caches
+*.log
+*.tmp
+*.tmp_proj
+*.cache
+*.[Cc]ache
+~$*
+*~
+*.pdb
+
+# Publish profiles and secrets
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+*.publishsettings
+PublishScripts/
+*.pfx
+
+# Database and generated data files
+*.mdf
+*.ldf
+App_Data/
+*.csproj.lscache
+
+# Frontend dependency caches if added later
+node_modules/
+.sass-cache/
