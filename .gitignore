@@ -255,3 +255,43 @@ paket-files/
 
 **/App_Data/**
 **/*.csproj.lscache
+**/*.csproj.user
+
+# Local configuration and secrets
+appsettings.*.local.json
+appsettings.*.Local.json
+appsettings.Local.json
+*.local.json
+.env
+.env.*
+!.env.example
+secrets.json
+
+# .NET CLI / test / coverage output
+.dotnet/
+.store/
+TestResults/
+coverage/
+coverage*/
+*.coverage
+*.coveragexml
+coverage.cobertura.xml
+coverage.opencover.xml
+*.trx
+*.blame
+
+# Build and deployment artifacts
+out/
+dist/
+*.snupkg
+*.symbols.nupkg
+
+# IDE and editor metadata
+.vsconfig
+.idea/
+.ionide/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
