@@ -2,6 +2,7 @@
 using FacadeCompanyName.FacadeProjectName.DomainService.Share.App;
 using Moq;
 using Shouldly;
+using System.Data;
 using System.Threading.Tasks;
 using Xunit;
 namespace FacadeCompanyName.FacadeProjectName.Tests.Health
@@ -17,7 +18,10 @@ namespace FacadeCompanyName.FacadeProjectName.Tests.Health
             var expectedTimestamp = "2024-01-01 00:00:00";
 
             oracleRepository
-                .Setup(repo => repo.ExecuteScalarAsync<string>(It.IsAny<string>(), It.IsAny<object>()))
+                .Setup(repo => repo.ExecuteScalarAsync<string>(
+                    It.IsAny<string>(),
+                    It.IsAny<object>(),
+                    It.IsAny<CommandType>()))
                 .ReturnsAsync(expectedTimestamp);
 
             var healthApplication = new HealthApplication(
@@ -33,7 +37,8 @@ namespace FacadeCompanyName.FacadeProjectName.Tests.Health
             oracleRepository.Verify(
                 repo => repo.ExecuteScalarAsync<string>(
                     It.Is<string>(query => query.Contains("sysdate")),
-                    It.IsAny<object>()),
+                    It.IsAny<object>(),
+                    It.IsAny<CommandType>()),
                 Times.Once);
         }
     }
