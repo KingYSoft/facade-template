@@ -1,9 +1,4 @@
 ﻿using Abp.Application.Services;
-using Abp.Application.Services.Dto;
-using Abp.Domain.Entities;
-using Facade.Core.Application.Services;
-using Facade.Core.Domain.Repositories;
-using Facade.Core.Web;
 using FacadeCompanyName.FacadeProjectName.DomainService.Share;
 
 namespace FacadeCompanyName.FacadeProjectName.Application
@@ -14,98 +9,41 @@ namespace FacadeCompanyName.FacadeProjectName.Application
         {
             LocalizationSourceName = FacadeProjectNameConsts.LocalizationSourceName;
         }
-    }
-    public abstract class FacadeProjectNameApplicationBase<TEntity, TEntityDto>
-       : FacadeProjectNameApplicationBase<TEntity, TEntityDto, int>
-       where TEntity : class, IEntity<int>
-       where TEntityDto : IEntityDto<int>
-    {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, int> repository) 
-            : base(repository)
+        /// <summary>
+        /// Normalize value
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        protected static string NormalizeInput(string value)
         {
-        }
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return null;
+            }
 
-    }
-    public abstract class FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey>
-       : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, PagedAndSortedResultRequestDto>
-       where TEntity : class, IEntity<TPrimaryKey>
-       where TEntityDto : IEntityDto<TPrimaryKey>
-    {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository) 
-            : base(repository)
-        {
+            return value.Trim();
         }
-
-    }
-    public abstract class FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput>
-      : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TEntityDto, TEntityDto>
-      where TEntity : class, IEntity<TPrimaryKey>
-      where TEntityDto : IEntityDto<TPrimaryKey>
-        where TGetAllInput : IPagedAndSortedResultRequest
-    {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository) 
-            : base(repository)
+        /// <summary>
+        /// 字符串 空，返回 false
+        /// ^(0|[1-9][0-9]{0,8})$
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public bool IsTestInt(string str)
         {
+            var reg = new System.Text.RegularExpressions.Regex("^(0|[1-9][0-9]{0,8})$");
+            return reg.IsMatch(string.IsNullOrWhiteSpace(str) ? "" : str);
         }
-
-    }
-    public abstract class FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput>
-       : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TCreateInput>
-      where TEntity : class, IEntity<TPrimaryKey>
-       where TEntityDto : IEntityDto<TPrimaryKey>
-        where TGetAllInput : IPagedAndSortedResultRequest
-       where TCreateInput : IEntityDto<TPrimaryKey>
-    {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository) 
-            : base(repository)
+        /// <summary>
+        /// 字符串 空，返回 false
+        /// ^(0.\\d{1,5}|0|[1-9][0-9]{0,8}|[1-9][0-9]{0,8}.\\d{1,5})$
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public bool IsTestDecimal(string str)
         {
-        }
-
-    }
-    public abstract class FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput>
-       : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, EntityDto<TPrimaryKey>>
-      where TEntity : class, IEntity<TPrimaryKey>
-       where TEntityDto : IEntityDto<TPrimaryKey>
-        where TGetAllInput : IPagedAndSortedResultRequest
-        where TCreateInput : IEntityDto<TPrimaryKey>
-       where TUpdateInput : IEntityDto<TPrimaryKey>
-    {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository) 
-            : base(repository)
-        {
-        }
-    }
-    public abstract class FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput>
-      : FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, EntityDto<TPrimaryKey>>
-      where TEntity : class, IEntity<TPrimaryKey>
-      where TEntityDto : IEntityDto<TPrimaryKey>
-        where TGetAllInput : IPagedAndSortedResultRequest
-        where TCreateInput : IEntityDto<TPrimaryKey>
-      where TUpdateInput : IEntityDto<TPrimaryKey>
-      where TGetInput : IEntityDto<TPrimaryKey>
-    {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository)
-             : base(repository)
-        {
-
-        }
-    }
-
-    public abstract class FacadeProjectNameApplicationBase<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, TDeleteInput>
-        : AsyncDapperCrudAppService<TEntity, TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, TDeleteInput>,
-        IFacadeProjectNameApplicationBase<TEntityDto, TPrimaryKey, TGetAllInput, TCreateInput, TUpdateInput, TGetInput, TDeleteInput>
-        where TEntity : class, IEntity<TPrimaryKey>
-        where TEntityDto : IEntityDto<TPrimaryKey>
-        where TGetAllInput : IPagedAndSortedResultRequest
-        where TCreateInput : IEntityDto<TPrimaryKey>
-        where TUpdateInput : IEntityDto<TPrimaryKey>
-        where TGetInput : IEntityDto<TPrimaryKey>
-        where TDeleteInput : IEntityDto<TPrimaryKey>
-    {
-        protected FacadeProjectNameApplicationBase(IFacadeDapperRepository<TEntity, TPrimaryKey> repository)
-           : base(repository)
-        {
-            LocalizationSourceName = FacadeProjectNameConsts.LocalizationSourceName;
+            var reg = new System.Text.RegularExpressions.Regex("^(0.\\d{1,5}|0|[1-9][0-9]{0,8}|[1-9][0-9]{0,8}.\\d{1,5})$");
+            return reg.IsMatch(string.IsNullOrWhiteSpace(str) ? "" : str);
         }
     }
 }
