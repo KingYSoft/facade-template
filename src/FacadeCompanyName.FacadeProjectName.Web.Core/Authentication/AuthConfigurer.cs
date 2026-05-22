@@ -74,7 +74,7 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Authentication
             }
 
             if (!context.HttpContext.Request.Path.HasValue ||
-                !context.HttpContext.Request.Path.Value.StartsWith("/signalr"))
+                !ShouldReadQueryStringTokenPath(context.HttpContext.Request.Path.Value))
             {
                 // We are just looking for signalr clients
                 return Task.CompletedTask;
@@ -86,10 +86,18 @@ namespace FacadeCompanyName.FacadeProjectName.Web.Core.Authentication
                 // Cookie value does not matches to querystring value
                 return Task.CompletedTask;
             }
-
-            // Set auth token from cookie
-            context.Token = SimpleStringCipher.Instance.Decrypt(qsAuthToken, AppConsts.DefaultPassPhrase);
+            try
+            {
+                // Set auth token from cookie
+                context.Token = SimpleStringCipher.Instance.Decrypt(qsAuthToken, AppConsts.DefaultPassPhrase);
+            }
+            catch { }
             return Task.CompletedTask;
+        }
+        public static bool ShouldReadQueryStringTokenPath(string path)
+        {
+            return !string.IsNullOrWhiteSpace(path) &&
+                   path.StartsWith("/signalr");
         }
     }
 }
